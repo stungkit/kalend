@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.9
+- Fixed bug with not working disabled views and related problems in config, thanks to @vyamashiro
+
+## 0.9.8
+- Added navigation to day view from month view
+- Keep selected date state when switching views
+
 ## 0.9.7
 - Updated event click callbacks 
 
