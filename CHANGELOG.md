@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.2
+- Fix German translation, thanks to @aliesenli
+
+## 0.10.1
+- Fix floating all day header events
+
 ## 0.10.0
 - Added dragging to create new event
 - Added prop isNewEventOpen to control new event dragging element visibility 
