@@ -5,7 +5,7 @@ import Kalend, { CalendarView, OnEventDragFinish } from 'kalend';
 import 'kalend/dist/styles/index.css';
 
 const CalendComponent = (props: any) => {
-  const [demoEvents, setDemoEvents] = useState({});
+  const [demoEvents, setDemoEvents] = useState([]);
 
   // Create and load demo events
   useEffect(() => {

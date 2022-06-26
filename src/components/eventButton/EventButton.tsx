@@ -474,22 +474,30 @@ const EventButton = (props: EventButtonProps) => {
       {type === EVENT_TYPE.MONTH ||
       type === EVENT_TYPE.HEADER ||
       type === EVENT_TYPE.SHOW_MORE_MONTH ? (
-        <EventMonth
-          event={event}
-          isDark={isDark}
-          type={type}
-          isDarkColor={isDarkColor}
-        />
+        event.children?.monthView ? (
+          event.children.monthView
+        ) : (
+          <EventMonth
+            event={event}
+            isDark={isDark}
+            type={type}
+            isDarkColor={isDarkColor}
+          />
+        )
       ) : null}
       {type === EVENT_TYPE.NORMAL ? (
-        <EventNormal
-          event={event}
-          isDark={isDark}
-          type={type}
-          meta={item.meta}
-          endAt={state.endAt}
-          isDarkColor={isDarkColor}
-        />
+        event.children?.daysView ? (
+          event.children.daysView
+        ) : (
+          <EventNormal
+            event={event}
+            isDark={isDark}
+            type={type}
+            meta={item.meta}
+            endAt={state.endAt}
+            isDarkColor={isDarkColor}
+          />
+        )
       ) : null}
       {isResizing.current ? (
         <div
@@ -527,7 +535,11 @@ const EventButton = (props: EventButtonProps) => {
       className={parseCssDark(`Kalend__Event-${type}`, isDark)}
       onClick={handleEventClick}
     >
-      <EventAgenda event={event} isDark={isDark} type={type} />
+      {event.children?.agendaView ? (
+        event.children.agendaView
+      ) : (
+        <EventAgenda event={event} isDark={isDark} type={type} />
+      )}
     </ButtonBase>
   );
 };

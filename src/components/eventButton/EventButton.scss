@@ -70,7 +70,7 @@
 
   &-agenda {
     @extend .Kalend__Event;
-    height: 55px !important;
+    min-height: 55px !important;
     justify-content: flex-start;
     align-items: center;
     color: $GRAY_800 !important;

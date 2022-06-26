@@ -2,6 +2,7 @@
 import { CALENDAR_VIEW, TIME_FORMAT, WEEKDAY_START } from './enums';
 import { DateTime } from 'luxon';
 import { OnPageChangeData } from '../index';
+import { ReactNode } from 'react';
 
 export interface Settings {
   selectedDate: string;
@@ -21,6 +22,11 @@ export interface CalendarEvent {
   summary: string;
   color: string;
   internalID?: string; // for repeated event clones
+  children?: {
+    agendaView?: ReactNode;
+    daysView?: ReactNode;
+    monthView?: ReactNode;
+  };
   [key: string]: any;
 }
 
