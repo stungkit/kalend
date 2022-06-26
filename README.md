@@ -25,7 +25,7 @@ Until stable version 1 updates might include breaking changes
 
 #
 
-If given interface and controls is not enough for you, you can use callbacks to access internal state and expand functionality to your ui.
+If given interface and controls is not enough for you, you can use callbacks to access internal state and expand the functionality of your ui.
 
 If you have any suggestion, feel free to open discussion or contact me directly at hello@nibdo.com
 
@@ -93,3 +93,9 @@ According to your needs, you can set timezone for each event and also set defaul
 If you don't provide timezone prop, your system default timezone will be used.
 
 You can keep other event properties, those will be ignored.
+
+### Troubleshooting
+
+#### Q: Calendar does not show timetable
+
+A: Your parent element has to have some height, so Kalend will inherit it and fit accordingly. For more information, refer to issue https://github.com/nibdo/kalend/issues/84#issuecomment-1003228182

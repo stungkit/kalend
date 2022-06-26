@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.14.13
+- fixed multi day events in header for day view
+- add missing prop for mapped elements
+
+## 0.14.12
+- fixed all day event in day view
+
+## 0.14.11
+- fixed positioning for overnight events (thanks to @cazfletch)
+- fixed onSelectView callback
+
 ## 0.14.10
 - Fixed navigating to day view
 
