@@ -4,7 +4,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "plugins": ["react", "@typescript-eslint", "sort-imports-es6-autofix", "unused-imports"],
   "env": {
@@ -21,13 +21,6 @@
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
-
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
-    ],
     "sort-imports-es6-autofix/sort-imports-es6": [
       2,
       {
@@ -43,6 +36,6 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["dist/*", "example_app/*", "docs/*"],
+  "ignorePatterns": ["build/*", "example_app/*", "docs/*"],
   "parser": "@typescript-eslint/parser"
 }

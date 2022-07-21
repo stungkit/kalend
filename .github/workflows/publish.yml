@@ -20,8 +20,8 @@ jobs:
       - run: npm ci
       - name: Run tests
         run: npm run test
-      - run: npm run package
-      - run: npm publish kalend-*.tgz
+      - run: npm run build
+      - run: npm publish ./build/
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Checkout repository
