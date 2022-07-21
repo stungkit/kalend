@@ -1,8 +1,6 @@
-@use "sass:math";
-
 @import '../../styles/colors';
 
-$month_view__height: math.div(100%, 6);
+$month_view__height: 100% / 6;
 
 .Kalend__WeekNumbersCol__wrapper {
   width: 30px;

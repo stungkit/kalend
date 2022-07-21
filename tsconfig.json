@@ -24,7 +24,7 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
+    "build",
     "src/test",
     "example_app"
   ],

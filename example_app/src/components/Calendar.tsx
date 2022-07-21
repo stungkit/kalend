@@ -38,8 +38,7 @@ const CalendComponent = (props: any) => {
   const onEventDragFinish: OnEventDragFinish = (
     prev: any,
     current: any,
-    data: any,
-    resetPosition: any
+    data: any
   ) => {
     setDemoEvents(data);
   };
