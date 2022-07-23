@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.14.18
+- fixed overnight events in month view
+
 ## 0.14.17
 - fixed event stacking
 

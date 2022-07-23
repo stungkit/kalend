@@ -36,7 +36,7 @@ export interface KalendProps {
   initialView?: CALENDAR_VIEW;
   selectedView?: CALENDAR_VIEW;
   disabledViews?: CALENDAR_VIEW[];
-  events?: any;
+  events?: CalendarEvent[];
   isDark?: boolean;
   hourHeight?: number;
   onNewEventClick?: OnNewEventClickFunc;

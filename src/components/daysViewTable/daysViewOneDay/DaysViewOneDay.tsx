@@ -228,6 +228,13 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     const targetClass = event.target.className;
 
     // prevent propagating when clicking on event due to listeners
+    if (
+      event.target?.offsetParent?.className?.indexOf('Kalend__button') !== -1
+    ) {
+      return;
+    }
+
+    // prevent propagating when clicking on event due to listeners
     if (targetClass.indexOf('Kalend__Event') !== -1) {
       return;
     }
