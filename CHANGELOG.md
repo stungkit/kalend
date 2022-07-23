@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.15.0
+- you can now replace event components with your own
+
 ## 0.14.18
 - fixed overnight events in month view
 
