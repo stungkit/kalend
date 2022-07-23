@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-### Custom events
+# Custom events
 
 You can now replace event components with your own. To do this you will have to do two steps:
 
