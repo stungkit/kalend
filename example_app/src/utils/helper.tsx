@@ -1,8 +1,6 @@
 import { DateTime } from 'luxon';
 import faker from 'faker';
 import { v4 } from 'uuid';
-import { AgendaEvent, Event, MonthEvent } from '../components/Event';
-import React from 'react';
 
 const colors: string[] = [
   'indigo',
@@ -47,13 +45,11 @@ export const generateDemoEvents = (
     });
     const endDate: DateTime = startDate.plus({ minute: minuteDuration });
 
-    const summary = faker.commerce.department();
-
     const event: any = {
       id: v4(),
       startAt: startDate.toUTC().toString(),
       endAt: endDate.toUTC().toString(),
-      summary,
+      summary: faker.commerce.department(),
       color: colors[Math.floor(Math.random() * colors.length - 1) + 1],
       allDay: endDate.day !== startDate.day,
       // style: {
@@ -62,11 +58,6 @@ export const generateDemoEvents = (
       //   background: 'white',
       //   color: 'black',
       // },
-      children: {
-        agendaView: <AgendaEvent summary={summary} />,
-        daysView: <Event summary={summary} />,
-        monthView: <MonthEvent summary={summary} />,
-      },
     };
 
     events.push(event);
