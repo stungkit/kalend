@@ -16,9 +16,6 @@ Until stable version 1 updates might include breaking changes
 
 ### LIVE demo: https://demo.kalend.org
 
-### Storybook: https://storybook.kalend.org  
-  
-  
 #
 
 ![Alt text](screenshot.png?raw=true 'Title')

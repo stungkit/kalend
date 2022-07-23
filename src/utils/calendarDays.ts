@@ -95,7 +95,7 @@ const calculateMondayStartWeekDay = (
   calendarView: CALENDAR_VIEW
 ): DateTime[] => {
   const days = [];
-  const dayInWeek = date.weekday;
+  const dayInWeek = Number(date.weekday);
   const startDate = date.minus({ days: dayInWeek - 1 });
 
   if (calendarView === CALENDAR_VIEW.MONTH) {

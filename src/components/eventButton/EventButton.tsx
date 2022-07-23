@@ -496,6 +496,7 @@ const EventButton = (props: EventButtonProps) => {
             meta={item.meta}
             endAt={state.endAt}
             isDarkColor={isDarkColor}
+            height={item.height}
           />
         )
       ) : null}
