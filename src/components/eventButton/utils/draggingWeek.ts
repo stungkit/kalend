@@ -14,10 +14,15 @@ export const calculateNewTimeWeekDay = (
   offsetLeftValue: number,
   xShiftIndexRef: any,
   event: CalendarEvent,
-  hourHeight: number
+  hourHeight: number,
+  config: Config
 ): CalendarEvent => {
-  const originalStartAtDateTime = DateTime.fromISO(event.startAt);
-  const originalEndAtDateTime = DateTime.fromISO(event.endAt);
+  const originalStartAtDateTime = DateTime.fromISO(event.startAt).setZone(
+    config.timezone
+  );
+  const originalEndAtDateTime = DateTime.fromISO(event.endAt).setZone(
+    config.timezone
+  );
 
   let goingForward = false;
   if (offsetLeftValue >= 0) {
