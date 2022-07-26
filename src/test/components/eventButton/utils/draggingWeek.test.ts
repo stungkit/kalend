@@ -15,7 +15,9 @@ const event: any = {
 
 describe(`draggingWeek funcs`, function () {
   it('calculateHeaderAfterDrag func: Should set 0 hour for same day', function () {
-    const result = calculateNewTimeWeekDay(60, 0, createRefMock(0), event, 60);
+    const result = calculateNewTimeWeekDay(60, 0, createRefMock(0), event, 60, {
+      timezone: TEST_TIMEZONE,
+    });
 
     assert.equal(result.startAt, '2021-11-07T00:00:00.000Z');
     assert.equal(result.endAt, '2021-11-07T01:00:00.000Z');
@@ -26,7 +28,10 @@ describe(`draggingWeek funcs`, function () {
       0,
       createRefMock(0),
       event,
-      60
+      60,
+      {
+        timezone: TEST_TIMEZONE,
+      }
     );
 
     assert.equal(result.startAt, '2021-11-07T12:00:00.000Z');
@@ -38,7 +43,10 @@ describe(`draggingWeek funcs`, function () {
       -50,
       createRefMock(-1),
       event,
-      60
+      60,
+      {
+        timezone: TEST_TIMEZONE,
+      }
     );
 
     assert.equal(result.startAt, '2021-11-06T00:00:00.000Z');
@@ -50,7 +58,10 @@ describe(`draggingWeek funcs`, function () {
       -50,
       createRefMock(-2),
       event,
-      60
+      60,
+      {
+        timezone: TEST_TIMEZONE,
+      }
     );
 
     assert.equal(result.startAt, '2021-11-05T22:00:00.000Z');
@@ -62,7 +73,10 @@ describe(`draggingWeek funcs`, function () {
       150,
       createRefMock(1),
       event,
-      60
+      60,
+      {
+        timezone: TEST_TIMEZONE,
+      }
     );
 
     assert.equal(result.startAt, '2021-11-08T11:00:00.000Z');
@@ -74,7 +88,10 @@ describe(`draggingWeek funcs`, function () {
       150,
       createRefMock(2),
       event,
-      60
+      60,
+      {
+        timezone: TEST_TIMEZONE,
+      }
     );
 
     assert.equal(result.startAt, '2021-11-09T13:00:00.000Z');

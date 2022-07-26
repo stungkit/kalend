@@ -38,14 +38,30 @@ export const getDateFromPosition = (
 
   const [hourStart, minuteStart] = stringValue.split('.');
 
-  return day
-    .set({
-      hour: Number(hourStart),
-      minute: Number(`0.${minuteStart}`) * 60,
-      second: 0,
-      millisecond: 0,
-    })
-    .setZone(config.timezone);
+  return day.setZone(config.timezone).set({
+    hour: Number(hourStart),
+    minute: Number(`0.${minuteStart}`) * 60,
+    second: 0,
+    millisecond: 0,
+  });
+};
+
+export const getNewEventDateFromPosition = (
+  value: number,
+  day: DateTime
+): DateTime => {
+  let stringValue = String(value);
+
+  stringValue = stringValue.includes('.') ? stringValue : `${stringValue}.0`;
+
+  const [hourStart, minuteStart] = stringValue.split('.');
+
+  return day.set({
+    hour: Number(hourStart),
+    minute: Number(`0.${minuteStart}`) * 60,
+    second: 0,
+    millisecond: 0,
+  });
 };
 
 export const getHourHeightPartialUnit = (config: Config) =>

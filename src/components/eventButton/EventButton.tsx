@@ -346,7 +346,8 @@ const EventButton = (props: EventButtonProps) => {
           offsetLeftRef.current,
           xShiftIndexRef,
           event,
-          hourHeight
+          hourHeight,
+          config
         );
       } else if (type === EVENT_TYPE.HEADER) {
         newEvent = calculateHeaderAfterDrag(
