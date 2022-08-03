@@ -14,7 +14,6 @@
       "optimize": false
     }
   },
-  "main": "main.js",
   "types": "index.d.ts",
   "style": "dist/styles/index.css",
   "repository": {
@@ -23,7 +22,7 @@
   },
   "dependencies": {
     "color": "4.2.3",
-    "dequal": "^2.0.3",
+    "dequal": "2.0.3",
     "kalend-layout": "0.0.17",
     "luxon": "2.5.0"
   },
