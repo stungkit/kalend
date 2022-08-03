@@ -6,6 +6,7 @@ import { MonthViewProps } from './MonthView.props';
 import { getMonthRows } from './monthWeekRow/MonthWeekRow.utils';
 import { getSelectedViewType } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
+import { useDeepCompareEffect } from '../../utils/useDeepCompareEffect';
 import DaysViewVerticalLines from '../daysViewTable/daysViewVerticalLines/DaysViewVerticalLines';
 import KalendLayout from 'kalend-layout';
 import MonthWeekRow from './monthWeekRow/MonthWeekRow';
@@ -79,7 +80,7 @@ const MonthView = (props: MonthViewProps) => {
     }
   }, [height, rawWidth]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     if (wasInit && height !== 0) {
       if (!hasExternalLayout) {
         KalendLayout({
@@ -103,9 +104,9 @@ const MonthView = (props: MonthViewProps) => {
         });
       }
     }
-  }, [calendarDays[0], JSON.stringify(events)]);
+  }, [calendarDays[0], events]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     if (
       hasExternalLayout &&
       getSelectedViewType(props.eventLayouts.selectedView) ===
@@ -123,7 +124,7 @@ const MonthView = (props: MonthViewProps) => {
       );
       setCalendarContent(content);
     }
-  }, [JSON.stringify(props.eventLayouts)]);
+  }, [props.eventLayouts]);
 
   return (
     <div className={'Kalend__MonthView__container'} style={style}>

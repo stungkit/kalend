@@ -5,6 +5,7 @@ import { DateTime } from 'luxon';
 import { getCalendarDays, getRange } from './utils/calendarDays';
 import { isSameMonth, parseCssDark } from './utils/common';
 import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useDeepCompareLayoutEffect } from './utils/useDeepCompareEffect';
 import AgendaView from './components/agendaView/AgendaView';
 import CalendarDesktopNavigation from './components/CalendarDesktopNavigation/CalendarDesktopNavigation';
 import CalendarHeader from './components/calendarHeader/CalendarHeader';
@@ -109,9 +110,9 @@ const Calendar = (props: CalendarProps) => {
     }
   }, [selectedView]);
 
-  useLayoutEffect(() => {
+  useDeepCompareLayoutEffect(() => {
     setContext('events', props.events);
-  }, [JSON.stringify(props.events)]);
+  }, [props.events]);
 
   useLayoutEffect(() => {
     if (

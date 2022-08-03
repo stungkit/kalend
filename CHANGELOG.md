@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.15.1
+- fix timezone problems when creating event 
+
 ## 0.15.0
 - you can now replace event components with your own
 

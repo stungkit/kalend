@@ -1,7 +1,8 @@
 import { Context, Store } from '../context/store';
 import { KalendState } from '../common/interface';
 import { getRange } from '../utils/calendarDays';
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useDeepCompareLayoutEffect } from '../utils/useDeepCompareEffect';
 
 const CalendarTableLayoutLayer = (props: { children: any }) => {
   const [store] = useContext(Context);
@@ -20,7 +21,7 @@ const CalendarTableLayoutLayer = (props: { children: any }) => {
   }, [document.querySelector('.Kalend__Calendar__table')]);
 
   // Expose basic state to outside
-  useLayoutEffect(() => {
+  useDeepCompareLayoutEffect(() => {
     if (callbacks.onStateChange && isMounted) {
       const data: KalendState = {
         selectedView,
@@ -36,9 +37,9 @@ const CalendarTableLayoutLayer = (props: { children: any }) => {
     }
   }, [
     selectedView,
-    JSON.stringify(calendarDays),
+    calendarDays,
     width,
-    JSON.stringify(config),
+    config,
     store.isMobile,
     isMounted,
     direction,

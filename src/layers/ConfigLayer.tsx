@@ -6,6 +6,7 @@ import { DateTime } from 'luxon';
 import { KalendProps } from '../index';
 import { filterEventsByCalendarIDs } from '../utils/eventLayout';
 import { useContext, useEffect, useState } from 'react';
+import { useDeepCompareEffect } from '../utils/useDeepCompareEffect';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const emptyFunction = () => {};
@@ -161,17 +162,14 @@ const ConfigLayer = (props: KalendProps) => {
     setContext('config', newConfig);
   }, [props.hourHeight]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     const eventsFiltered: any = filterEventsByCalendarIDs(
       props.events,
       props.calendarIDsHidden
     );
 
     setContext('events', eventsFiltered);
-  }, [
-    JSON.stringify(props.calendarIDsHidden),
-    props.calendarIDsHidden?.length,
-  ]);
+  }, [props.calendarIDsHidden, props.calendarIDsHidden?.length]);
 
   return isReady ? props.children : null;
 };

@@ -2,7 +2,8 @@ import { Context } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { EVENT_TYPE } from '../../../common/enums';
 import { getDaysNum } from '../../../utils/calendarDays';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
+import { useDeepCompareEffect } from '../../../utils/useDeepCompareEffect';
 import EventButton from '../../eventButton/EventButton';
 
 const CalendarHeaderEvents = () => {
@@ -66,13 +67,13 @@ const CalendarHeaderEvents = () => {
   //   }, 600);
   // }, [store.headerEventRowsCount]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     const headerEventsRaw = renderEvents(
       store.headerLayout,
       store.layoutUpdateSequence + 1
     );
     setHeaderEvents(headerEventsRaw);
-  }, [JSON.stringify(store.headerLayout)]);
+  }, [store.headerLayout]);
 
   return (
     <div

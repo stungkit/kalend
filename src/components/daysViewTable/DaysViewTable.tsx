@@ -8,6 +8,7 @@ import {
   getSelectedViewType,
 } from '../../utils/common';
 import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useDeepCompareLayoutEffect } from '../../utils/useDeepCompareEffect';
 import CalendarBodyHours from './daysViewOneDay/calendarBodyHours/CalendarBodyHours';
 import DaysViewOneDay from './daysViewOneDay/DaysViewOneDay';
 import DaysViewVerticalLines from './daysViewVerticalLines/DaysViewVerticalLines';
@@ -126,7 +127,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
     }
   }, [width]);
 
-  useLayoutEffect(() => {
+  useDeepCompareLayoutEffect(() => {
     if (!hasExternalLayout) {
       KalendLayout({
         events,
@@ -151,7 +152,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
         setCalendarContent(days);
       });
     }
-  }, [JSON.stringify(events)]);
+  }, [events]);
 
   useLayoutEffect(() => {
     if (!hasExternalLayout) {
@@ -207,7 +208,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
     setWasInit(true);
   }, []);
 
-  useLayoutEffect(() => {
+  useDeepCompareLayoutEffect(() => {
     if (
       hasExternalLayout &&
       getSelectedViewType(props.eventLayouts.selectedView) ===
@@ -225,7 +226,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
       );
       setCalendarContent(days);
     }
-  }, [props.eventLayouts, JSON.stringify(props.eventLayouts)]);
+  }, [props.eventLayouts]);
 
   return (
     <div
