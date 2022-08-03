@@ -4,6 +4,7 @@ import { Context } from '../../context/store';
 import { DateTime } from 'luxon';
 import { getSelectedViewType } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
+import { useDeepCompareEffect } from '../../utils/useDeepCompareEffect';
 import AgendaDayRow from './agendaDayRow/AgendaDayRow';
 import KalendLayout from 'kalend-layout';
 import LuxonHelper, { EVENTS_DAY_FORMAT } from '../../utils/luxonHelper';
@@ -63,7 +64,7 @@ const AgendaView = (props: AgendaViewProps) => {
     }
   }, [calendarDays[0]]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     // don't need to call this immediately
     if (wasInit) {
       if (!hasExternalLayout) {
@@ -82,9 +83,9 @@ const AgendaView = (props: AgendaViewProps) => {
         });
       }
     }
-  }, [JSON.stringify(events)]);
+  }, [events]);
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     if (
       hasExternalLayout &&
       getSelectedViewType(props.eventLayouts.selectedView) ===
@@ -98,7 +99,7 @@ const AgendaView = (props: AgendaViewProps) => {
       );
       setCalendarContent(content);
     }
-  }, [JSON.stringify(props.eventLayouts)]);
+  }, [props.eventLayouts]);
 
   return (
     <div className={'Kalend__Agenda__container'} style={{ height: '100%' }}>
