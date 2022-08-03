@@ -2,19 +2,29 @@ import { AgendaViewProps } from './AgendaView.props';
 import { CALENDAR_VIEW } from '../../common/enums';
 import { Context } from '../../context/store';
 import { DateTime } from 'luxon';
-import { getSelectedViewType } from '../../utils/common';
+import { getSelectedViewType, parseCssDark } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
 import { useDeepCompareEffect } from '../../utils/useDeepCompareEffect';
 import AgendaDayRow from './agendaDayRow/AgendaDayRow';
 import KalendLayout from 'kalend-layout';
 import LuxonHelper, { EVENTS_DAY_FORMAT } from '../../utils/luxonHelper';
 
-const renderAgendaEvents = (events: any, calendarDays: DateTime[]) => {
+const renderAgendaEvents = (
+  events: any,
+  calendarDays: DateTime[],
+  isDark: boolean
+) => {
   let scrollToSet = false;
-  return calendarDays.map((calendarDay: DateTime) => {
+  let hasNoEvents = false;
+
+  const result = calendarDays.map((calendarDay: DateTime) => {
     const hasEvents = !!events[calendarDay.toFormat(EVENTS_DAY_FORMAT)];
     let scrollToThis = false;
     if (hasEvents) {
+      if (!hasNoEvents) {
+        hasNoEvents = true;
+      }
+
       if (!scrollToSet && LuxonHelper.isTodayOrInFuture(calendarDay)) {
         scrollToSet = true;
         scrollToThis = true;
@@ -29,6 +39,20 @@ const renderAgendaEvents = (events: any, calendarDays: DateTime[]) => {
       );
     }
   });
+
+  if (!hasNoEvents) {
+    return (
+      <div className={'Kalend__Agenda__container-empty'}>
+        <div className={'Kalend__Agenda__container-inner'}>
+          <h4 className={parseCssDark('Kalend__Agenda__text-empty', isDark)}>
+            No events
+          </h4>
+        </div>
+      </div>
+    );
+  }
+
+  return result;
 };
 
 const AgendaView = (props: AgendaViewProps) => {
@@ -41,7 +65,8 @@ const AgendaView = (props: AgendaViewProps) => {
     dispatch({ type, payload });
   };
 
-  const { calendarDays, width, height } = store;
+  const { calendarDays, width, height, config } = store;
+  const { isDark } = config;
 
   const hasExternalLayout = eventLayouts !== undefined;
 
@@ -57,7 +82,11 @@ const AgendaView = (props: AgendaViewProps) => {
       }).then((res: any) => {
         setContext('layoutUpdateSequence', store.layoutUpdateSequence + 1);
 
-        const content: any = renderAgendaEvents(res.events, calendarDays);
+        const content: any = renderAgendaEvents(
+          res.events,
+          calendarDays,
+          isDark
+        );
         setCalendarContent(content);
       });
       setWasInit(true);
@@ -78,7 +107,11 @@ const AgendaView = (props: AgendaViewProps) => {
         }).then((res: any) => {
           setContext('layoutUpdateSequence', store.layoutUpdateSequence + 1);
 
-          const content: any = renderAgendaEvents(res.events, calendarDays);
+          const content: any = renderAgendaEvents(
+            res.events,
+            calendarDays,
+            isDark
+          );
           setCalendarContent(content);
         });
       }
@@ -95,7 +128,8 @@ const AgendaView = (props: AgendaViewProps) => {
 
       const content: any = renderAgendaEvents(
         props.eventLayouts?.events,
-        calendarDays
+        calendarDays,
+        isDark
       );
       setCalendarContent(content);
     }
