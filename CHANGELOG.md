@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.2
+- current timeline will update position in intervals
+- added no events text to agenda view
+- optimization for hooks by @yss14
+
 ## 0.15.1
 - fix timezone problems when creating event 
 
