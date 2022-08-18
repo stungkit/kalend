@@ -34,4 +34,5 @@ sidebar_position: 2
 `disabledDragging`               | `boolean`                                               |               |  | false    | disable dragging and resizing globally
 `colors`               | [see more](https://docs.kalend.org/docs/basics/styling) |               |  | false    | set custom colors for dark/light theme
 `testMode`               | boolean                                                 |               |  | false    | disable validations for testing
+`newEventText`               | string                                                 |               |  | false    | custom new event text replaces default "New event"
 
