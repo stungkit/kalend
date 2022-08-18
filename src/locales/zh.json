@@ -6,7 +6,8 @@
     "threeDays": "3天",
     "week": "星期",
     "month": "月",
-    "showMore": "显示更多"
+    "showMore": "显示更多",
+    "newEvent": "新事件"
   },
   "months": {
     "january": "一月",

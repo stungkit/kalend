@@ -6,7 +6,8 @@
       "threeDays": "3 дня",
       "week": "Неделя",
       "month": "Месяц",
-      "showMore": "Еще..."
+      "showMore": "Еще...",
+      "newEvent": "новое событие"
     },
     "months": {
       "january": "Январь",

@@ -75,6 +75,7 @@ export const createConfig = (props: KalendProps): Config => {
     showTimeLine: props.showTimeLine || false,
     autoScroll: props.autoScroll || false,
     disabledDragging: props.disabledDragging || false,
+    newEventText: props.newEventText || null,
   };
 };
 
@@ -150,6 +151,7 @@ const ConfigLayer = (props: KalendProps) => {
     // props.disabledViews, // keeps re-rendering without any change
     props.isDark,
     props.disableMobileDropdown,
+    props.newEventText,
   ]);
 
   useEffect(() => {

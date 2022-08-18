@@ -76,7 +76,14 @@ interface DaysViewOneDayProps {
 const DaysViewOneDay = (props: DaysViewOneDayProps) => {
   const { day, index, data } = props;
   const [store] = useContext(Context);
-  const { width, selectedView, config, callbacks, isNewEventOpen } = store;
+  const {
+    width,
+    selectedView,
+    config,
+    callbacks,
+    isNewEventOpen,
+    translations,
+  } = store;
   const { onNewEventClick } = callbacks;
   const { isDark, hourHeight } = config;
 
@@ -433,7 +440,7 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
         />
       ) : null}
       {isDraggingRef.current ? (
-        <div style={style}>
+        <div style={style} className={'Kalend__NewEvent'}>
           <div
             style={{
               paddingTop: 4,
@@ -441,7 +448,11 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
               fontSize: 12,
             }}
           >
-            <p style={{ color: 'white' }}>New event</p>
+            <p style={{ color: 'white' }}>
+              {config.newEventText
+                ? config.newEventText
+                : translations['buttons']['newEvent']}
+            </p>
             <p style={{ color: 'white' }}>
               {startAtState ? startAtState.toFormat('HH:mm') : ''} -{' '}
               {endAtState ? endAtState.toFormat('HH:mm') : ''}
