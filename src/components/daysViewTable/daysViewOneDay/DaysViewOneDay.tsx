@@ -111,7 +111,10 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     }
 
     if (onNewEventClick) {
-      const rect: { top: number } = event.target.getBoundingClientRect();
+      const element = document.querySelector('.Kalend__DayViewOneDay');
+      const rect: { top: number } =
+        element?.getBoundingClientRect() ||
+        event.target.getBoundingClientRect();
       const y: number = event.clientY - rect.top;
 
       const startAtOnClick = getDateFromPosition(
