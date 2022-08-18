@@ -66,6 +66,7 @@ export interface KalendProps {
   autoScroll?: boolean;
   disabledDragging?: boolean;
   testMode?: boolean;
+  newEventText?: string;
 }
 
 // use any as JSX was causing errors for some cases
