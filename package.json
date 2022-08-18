@@ -23,7 +23,7 @@
   "dependencies": {
     "color": "4.2.3",
     "dequal": "2.0.3",
-    "kalend-layout": "0.0.17",
+    "kalend-layout": "0.0.18",
     "luxon": "2.5.0"
   },
   "devDependencies": {
