@@ -120,6 +120,7 @@ export interface Config {
   showTimeLine: boolean;
   autoScroll: boolean;
   disabledDragging: boolean;
+  newEventText?: string | null;
 }
 
 export interface KalendState {
