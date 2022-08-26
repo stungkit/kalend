@@ -75,7 +75,8 @@ const Calendar = (props: CalendarProps) => {
         ? selectedDate
         : selectedDate || props.initialDate || DateTime.now(),
       config.weekDayStart,
-      setSelectedDate
+      setSelectedDate,
+      true
     );
 
     setContext('calendarDays', calendarDaysNew);
@@ -103,7 +104,8 @@ const Calendar = (props: CalendarProps) => {
         selectedViewValue,
         selectedDate || props.initialDate || DateTime.now(),
         config.weekDayStart,
-        setSelectedDate
+        setSelectedDate,
+        true
       );
 
       setContext('calendarDays', calendarDaysNew);

@@ -101,9 +101,26 @@ const LuxonHelper = {
 
     return (
       dateA.day >= todayDate.day &&
-      dateA.month >= todayDate.month &&
-      dateA.year >= todayDate.year
+      dateA.month === todayDate.month &&
+      dateA.year === todayDate.year
     );
+  },
+
+  isNearDateOrInFuture: (
+    selectedDate: DateTime,
+    calendarDay: DateTime
+  ): boolean => {
+    return (
+      selectedDate.day >= calendarDay.day &&
+      selectedDate.month === calendarDay.month &&
+      selectedDate.year === calendarDay.year
+    );
+  },
+
+  isCurrentMonth: (dateA: DateTime): boolean => {
+    const todayDate: DateTime = DateTime.local();
+
+    return dateA.month === todayDate.month && dateA.year === todayDate.year;
   },
 
   parseToString: (date: DateTime | string): string => {
