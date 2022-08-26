@@ -34,7 +34,7 @@ const renderAgendaEvents = (
       ) {
         scrollToSet = true;
         scrollToThis = true;
-      } else if ((!scrollToSet && !scrollToThis) || wasInit) {
+      } else if (!scrollToSet && !scrollToThis && wasInit) {
         const element = document.querySelector('.Kalend__Agenda__container');
 
         element?.scrollTo({ top: 0 });

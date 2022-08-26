@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.15.6
+## 0.15.7
 - fixed scrolling to top in agenda view navigation
 
 ## 0.15.5
