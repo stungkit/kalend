@@ -172,11 +172,21 @@ export const getWeekDays = (
 export const getThreeDays = (
   date: DateTime,
   setSelectedDate: any,
-  isGoingForward?: boolean | null
+  isGoingForward?: boolean | null,
+  isChangingView?: boolean
 ): DateTime[] => {
   const days = [];
 
-  if (isGoingForward === null || isGoingForward === undefined) {
+  if (isChangingView) {
+    for (let i = 0; i <= 2; i++) {
+      days.push(date.plus({ days: i }));
+    }
+
+    // Set state
+    if (setSelectedDate) {
+      setSelectedDate(days[0]);
+    }
+  } else if (isGoingForward === null || isGoingForward === undefined) {
     for (let i = 0; i <= 2; i++) {
       days.push(date.plus({ days: i }));
     }
@@ -190,9 +200,11 @@ export const getThreeDays = (
     }
   }
 
-  // Set state
-  if (setSelectedDate) {
-    setSelectedDate(days[1]);
+  if (!isChangingView) {
+    // Set state
+    if (setSelectedDate) {
+      setSelectedDate(days[1]);
+    }
   }
 
   return days;
@@ -212,7 +224,7 @@ export const getDaysNum = (calendarView: CALENDAR_VIEW): number => {
 };
 
 const getOneDay = (date: DateTime, setSelectedDate: any): DateTime[] => {
-  const refDate: DateTime = calculateOneDay(date);
+  const refDate = calculateOneDay(date);
 
   // Set state
   if (setSelectedDate) {
@@ -272,7 +284,7 @@ export const getAgendaDays = (
 
   // Set state
   if (setSelectedDate) {
-    setSelectedDate(monthDays[15]);
+    setSelectedDate(date);
   }
 
   return monthDays;
@@ -281,12 +293,13 @@ export const getAgendaDays = (
 export const getMonthDays = (
   date: DateTime,
   setSelectedDate: any,
-  weekDayStart: WEEKDAY_START
+  weekDayStart: WEEKDAY_START,
+  isChangingView?: boolean
 ) => {
   const monthDays: DateTime[] = calculateMonthDays(date, weekDayStart);
 
   // Set state
-  if (setSelectedDate) {
+  if (setSelectedDate && !isChangingView) {
     setSelectedDate(monthDays[15]);
   }
 
@@ -345,17 +358,18 @@ export const getCalendarDays = (
   calendarView: CALENDAR_VIEW,
   date: DateTime,
   weekDayStart: WEEKDAY_START,
-  setSelectedDate?: any
+  setSelectedDate?: any,
+  isChangingView?: boolean
 ): DateTime[] => {
   switch (calendarView) {
     case CALENDAR_VIEW.WEEK:
       return getWeekDays(date, calendarView, weekDayStart, setSelectedDate);
     case CALENDAR_VIEW.THREE_DAYS:
-      return getThreeDays(date, setSelectedDate);
+      return getThreeDays(date, setSelectedDate, undefined, isChangingView);
     case CALENDAR_VIEW.DAY:
       return getOneDay(date, setSelectedDate);
     case CALENDAR_VIEW.MONTH:
-      return getMonthDays(date, setSelectedDate, weekDayStart);
+      return getMonthDays(date, setSelectedDate, weekDayStart, isChangingView);
     case CALENDAR_VIEW.AGENDA:
       return getAgendaDays(date, setSelectedDate);
     default:

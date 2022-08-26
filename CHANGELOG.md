@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.3
+- bug fixes
+- added translations
+- added custom new event text
+
 ## 0.15.2
 - current timeline will update position in intervals
 - added no events text to agenda view

@@ -12,7 +12,8 @@ import LuxonHelper, { EVENTS_DAY_FORMAT } from '../../utils/luxonHelper';
 const renderAgendaEvents = (
   events: any,
   calendarDays: DateTime[],
-  isDark: boolean
+  isDark: boolean,
+  selectedDate?: DateTime
 ) => {
   let scrollToSet = false;
   let hasNoEvents = false;
@@ -25,10 +26,18 @@ const renderAgendaEvents = (
         hasNoEvents = true;
       }
 
-      if (!scrollToSet && LuxonHelper.isTodayOrInFuture(calendarDay)) {
+      if (
+        selectedDate &&
+        LuxonHelper.isNearDateOrInFuture(selectedDate, calendarDay)
+      ) {
         scrollToSet = true;
         scrollToThis = true;
+      } else if (!scrollToSet && !scrollToThis) {
+        const element = document.querySelector('.Kalend__Agenda__container');
+
+        element?.scrollTo({ top: 0 });
       }
+
       return (
         <AgendaDayRow
           key={calendarDay.toString()}
@@ -65,7 +74,7 @@ const AgendaView = (props: AgendaViewProps) => {
     dispatch({ type, payload });
   };
 
-  const { calendarDays, width, height, config } = store;
+  const { calendarDays, width, height, config, selectedDate } = store;
   const { isDark } = config;
 
   const hasExternalLayout = eventLayouts !== undefined;
@@ -85,7 +94,8 @@ const AgendaView = (props: AgendaViewProps) => {
         const content: any = renderAgendaEvents(
           res.events,
           calendarDays,
-          isDark
+          isDark,
+          selectedDate
         );
         setCalendarContent(content);
       });
@@ -110,7 +120,8 @@ const AgendaView = (props: AgendaViewProps) => {
           const content: any = renderAgendaEvents(
             res.events,
             calendarDays,
-            isDark
+            isDark,
+            selectedDate
           );
           setCalendarContent(content);
         });
@@ -129,7 +140,8 @@ const AgendaView = (props: AgendaViewProps) => {
       const content: any = renderAgendaEvents(
         props.eventLayouts?.events,
         calendarDays,
-        isDark
+        isDark,
+        selectedDate
       );
       setCalendarContent(content);
     }
