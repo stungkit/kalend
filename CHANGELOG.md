@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.15.4
+- fixed agenda view scrolling to date
+- fixed changing selected date when switching views
+
 ## 0.15.3
 - bug fixes
 - added translations
