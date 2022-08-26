@@ -13,7 +13,8 @@ const renderAgendaEvents = (
   events: any,
   calendarDays: DateTime[],
   isDark: boolean,
-  selectedDate?: DateTime
+  selectedDate?: DateTime,
+  wasInit?: boolean
 ) => {
   let scrollToSet = false;
   let hasNoEvents = false;
@@ -27,12 +28,13 @@ const renderAgendaEvents = (
       }
 
       if (
+        !wasInit &&
         selectedDate &&
         LuxonHelper.isNearDateOrInFuture(selectedDate, calendarDay)
       ) {
         scrollToSet = true;
         scrollToThis = true;
-      } else if (!scrollToSet && !scrollToThis) {
+      } else if ((!scrollToSet && !scrollToThis) || wasInit) {
         const element = document.querySelector('.Kalend__Agenda__container');
 
         element?.scrollTo({ top: 0 });
@@ -95,7 +97,8 @@ const AgendaView = (props: AgendaViewProps) => {
           res.events,
           calendarDays,
           isDark,
-          selectedDate
+          selectedDate,
+          wasInit
         );
         setCalendarContent(content);
       });
@@ -121,7 +124,8 @@ const AgendaView = (props: AgendaViewProps) => {
             res.events,
             calendarDays,
             isDark,
-            selectedDate
+            selectedDate,
+            wasInit
           );
           setCalendarContent(content);
         });
@@ -141,7 +145,8 @@ const AgendaView = (props: AgendaViewProps) => {
         props.eventLayouts?.events,
         calendarDays,
         isDark,
-        selectedDate
+        selectedDate,
+        wasInit
       );
       setCalendarContent(content);
     }

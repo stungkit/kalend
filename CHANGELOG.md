@@ -1,6 +1,9 @@
 # Changelog
 
-## 0.15.4
+## 0.15.6
+- fixed scrolling to top in agenda view navigation
+
+## 0.15.5
 - fixed agenda view scrolling to date
 - fixed changing selected date when switching views
 
