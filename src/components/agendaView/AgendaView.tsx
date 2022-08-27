@@ -14,7 +14,7 @@ const renderAgendaEvents = (
   calendarDays: DateTime[],
   isDark: boolean,
   selectedDate?: DateTime,
-  wasInit?: boolean
+  monthInView?: null | DateTime
 ) => {
   let scrollToSet = false;
   let hasNoEvents = false;
@@ -28,13 +28,21 @@ const renderAgendaEvents = (
       }
 
       if (
-        !wasInit &&
         selectedDate &&
-        LuxonHelper.isNearDateOrInFuture(selectedDate, calendarDay)
+        LuxonHelper.isNearDateOrInFuture(selectedDate, calendarDay) &&
+        (!monthInView ||
+          (monthInView && LuxonHelper.isSameMonth(selectedDate, monthInView)))
       ) {
         scrollToSet = true;
         scrollToThis = true;
-      } else if (!scrollToSet && !scrollToThis && wasInit) {
+      } else if (
+        !scrollToSet &&
+        !scrollToThis &&
+        (!monthInView ||
+          (monthInView &&
+            selectedDate &&
+            !LuxonHelper.isSameMonth(selectedDate, monthInView)))
+      ) {
         const element = document.querySelector('.Kalend__Agenda__container');
 
         element?.scrollTo({ top: 0 });
@@ -68,7 +76,8 @@ const renderAgendaEvents = (
 
 const AgendaView = (props: AgendaViewProps) => {
   const { events, eventLayouts } = props;
-  const [wasInit, setWasInit] = useState(false);
+  const [monthInView, setMonthInView] = useState<null | DateTime>(null);
+
   const [calendarContent, setCalendarContent] = useState(null);
 
   const [store, dispatch] = useContext(Context);
@@ -98,17 +107,22 @@ const AgendaView = (props: AgendaViewProps) => {
           calendarDays,
           isDark,
           selectedDate,
-          wasInit
+          monthInView
         );
         setCalendarContent(content);
       });
-      setWasInit(true);
     }
   }, [calendarDays[0]]);
 
+  useEffect(() => {
+    if (!monthInView) {
+      setMonthInView(calendarDays[15]);
+    }
+  }, []);
+
   useDeepCompareEffect(() => {
     // don't need to call this immediately
-    if (wasInit) {
+    if (monthInView) {
       if (!hasExternalLayout) {
         KalendLayout({
           events,
@@ -125,7 +139,7 @@ const AgendaView = (props: AgendaViewProps) => {
             calendarDays,
             isDark,
             selectedDate,
-            wasInit
+            monthInView
           );
           setCalendarContent(content);
         });
@@ -146,7 +160,7 @@ const AgendaView = (props: AgendaViewProps) => {
         calendarDays,
         isDark,
         selectedDate,
-        wasInit
+        monthInView
       );
       setCalendarContent(content);
     }
