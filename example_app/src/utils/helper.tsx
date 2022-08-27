@@ -19,21 +19,21 @@ const colors: string[] = [
 
 export const generateDemoEvents = (
   date: DateTime = DateTime.now(),
-  count = 190
+  count = 250
 ) => {
   const events: any = [];
 
-  const monthStart: any = date
+  const start: any = date
     .set({ day: 1 })
-    .minus({ days: 14 })
+    .minus({ month: 2 })
     .toFormat('yyyy-MM-dd');
-  const monthEnd: any = date
+  const end: any = date
     .set({ day: 28 })
-    .plus({ days: 14 })
+    .plus({ month: 2 })
     .toFormat('yyyy-MM-dd');
 
   for (let i = 1; i < count; i += 1) {
-    const dateStart: any = faker.date.between(monthStart, monthEnd);
+    const dateStart: any = faker.date.between(start, end);
 
     const hour: number = Math.floor(Math.random() * 23) + 1;
     const minute: number = Math.floor(Math.random() * 40) + 1;
