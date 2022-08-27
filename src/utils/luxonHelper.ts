@@ -106,6 +106,10 @@ const LuxonHelper = {
     );
   },
 
+  isSameMonth: (dateA: DateTime, dateB: DateTime): boolean => {
+    return dateA.month === dateB.month && dateA.year === dateB.year;
+  },
+
   isNearDateOrInFuture: (
     selectedDate: DateTime,
     calendarDay: DateTime
