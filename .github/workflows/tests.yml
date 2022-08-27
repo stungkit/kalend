@@ -2,7 +2,7 @@ name: Unit tests
 
 on:
   pull_request:
-    branches: [ development, staging, main ]
+    branches: [ main ]
 
 jobs:
   build:
