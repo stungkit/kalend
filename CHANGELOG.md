@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.15.8
+- fixed scrolling agenda view with custom header
+
 ## 0.15.7
 - fixed scrolling to top in agenda view navigation
 
