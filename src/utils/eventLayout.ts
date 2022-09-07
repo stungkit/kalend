@@ -28,22 +28,22 @@ export const checkOverlappingEvents = (
 ): boolean => {
   const startAtFirst: DateTime = parseToDateTime(
     eventA.startAt,
-    eventA.timezoneStartAt,
+    timezone,
     timezone
   );
   const endAtFirst: DateTime = parseToDateTime(
     eventA.endAt,
-    eventA.timezoneStartAt,
+    timezone,
     timezone
   );
   const startAtSecond: DateTime = parseToDateTime(
     eventB.startAt,
-    eventB.timezoneStartAt,
+    timezone,
     timezone
   );
   const endAtSecond: DateTime = parseToDateTime(
     eventB.endAt,
-    eventB.timezoneStartAt,
+    timezone,
     timezone
   );
 
@@ -160,11 +160,11 @@ export const calculateNormalEventPositions = (
 
         const offsetTop: any =
           // @ts-ignore
-          parseToDateTime(event.startAt, event.timezoneStartAt, config.timezone)
+          parseToDateTime(event.startAt, config.timezone, config.timezone)
             .diff(
               parseToDateTime(
                 event.startAt,
-                event.timezoneStartAt,
+                config.timezone,
                 config.timezone
               ).set({
                 hour: 0,
@@ -178,11 +178,8 @@ export const calculateNormalEventPositions = (
 
         const eventHeight: any =
           // @ts-ignore
-          parseToDateTime(event.endAt, event.timezoneStartAt)
-            .diff(
-              parseToDateTime(event.startAt, event.timezoneStartAt),
-              'minutes'
-            )
+          parseToDateTime(event.endAt, config.timezone)
+            .diff(parseToDateTime(event.startAt, config.timezone), 'minutes')
             .toObject().minutes /
           (60 / config.hourHeight); // adjust based on hour column height
 
@@ -288,14 +285,8 @@ export const checkOverlappingDatesForHeaderEvents = (
   day: DateTime,
   timezone: string
 ): boolean => {
-  const dateStart = parseToDateTime(
-    event.startAt,
-    event.timezoneStartAt || timezone
-  );
-  const dateEnd = parseToDateTime(
-    event.endAt,
-    event.timezoneStartAt || timezone
-  );
+  const dateStart = parseToDateTime(event.startAt, timezone);
+  const dateEnd = parseToDateTime(event.endAt, timezone);
   const dayTruncated: number = parseToDate(day)
     .set({ hour: 0, minute: 0, millisecond: 0, second: 0 })
     .toMillis();

@@ -21,19 +21,19 @@ const parseTimeFormat = (day: DateTime, timeFormat: TIME_FORMAT): string => {
 const formatEventTimeV2 = (
   event: CalendarEvent,
   timeFormat: TIME_FORMAT,
-  timezone?: string,
+  timezone: string,
   endAtState?: string
 ): { start: string; end: string } => {
-  const { startAt, endAt, timezoneStartAt } = event;
+  const { startAt, endAt } = event;
 
   const startAtDateTime: DateTime = parseToDateTime(
     startAt,
-    timezoneStartAt,
+    timezone,
     timezone
   );
   const endAtDateTime: DateTime = parseToDateTime(
     endAtState || endAt,
-    timezoneStartAt,
+    timezone,
     timezone
   );
 

@@ -70,15 +70,18 @@ export const getDayTimeStart = (date: DateTime): string =>
 export const getDayTimeEnd = (date: DateTime): string =>
   date.set({ hour: 23, minute: 59, second: 59 }).toUTC().toString();
 
-export const isAllDayEvent = (item: CalendarEvent): boolean => {
+export const isAllDayEvent = (
+  item: CalendarEvent,
+  timezone: string
+): boolean => {
   if (!item) {
     return false;
   }
 
   return (
     // @ts-ignore
-    parseToDateTime(item.endAt, item.timezoneStartAt)
-      .diff(parseToDateTime(item.startAt, item.timezoneStartAt), 'days')
+    parseToDateTime(item.endAt, timezone)
+      .diff(parseToDateTime(item.startAt, timezone), 'days')
       .toObject().days > 1
   );
 };
@@ -139,10 +142,9 @@ export const eventsToDateKey = (events: CalendarEvent[], timezone: string) => {
   const result: any = {};
 
   events?.forEach((item: any) => {
-    const dateKey: any = parseToDateTime(
-      item.startAt,
-      item.timezoneStartAt || timezone
-    ).toFormat('dd-MM-yyyy');
+    const dateKey: any = parseToDateTime(item.startAt, timezone).toFormat(
+      'dd-MM-yyyy'
+    );
 
     if (result[dateKey]) {
       result[dateKey] = [...result[dateKey], ...[item]];

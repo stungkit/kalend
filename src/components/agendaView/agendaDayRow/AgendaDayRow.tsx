@@ -27,12 +27,8 @@ const renderEvents = (events: CalendarEvent[], timezone: string) => {
 
   let sortedEvents: CalendarEvent[] = normalEvents?.sort((a, b) => {
     return (
-      DateTime.fromISO(a.startAt)
-        .setZone(a.timezoneStartAt || timezone)
-        .toMillis() -
-      DateTime.fromISO(b.startAt)
-        .setZone(b.timezoneStartAt || timezone)
-        .toMillis()
+      DateTime.fromISO(a.startAt).setZone(timezone).toMillis() -
+      DateTime.fromISO(b.startAt).setZone(timezone).toMillis()
     );
   });
 

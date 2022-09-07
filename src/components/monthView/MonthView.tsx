@@ -78,7 +78,7 @@ const MonthView = (props: MonthViewProps) => {
         });
       }
     }
-  }, [height, rawWidth]);
+  }, [height, rawWidth, store.config.timezone]);
 
   useDeepCompareEffect(() => {
     if (wasInit && height !== 0) {

@@ -144,6 +144,7 @@ const ConfigLayer = (props: KalendProps) => {
 
   useEffect(() => {
     initFromProps();
+    setContext('layoutUpdateSequence', store.layoutUpdateSequence + 1);
   }, [
     props.timeFormat,
     props.timezone,

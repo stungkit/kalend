@@ -112,7 +112,7 @@ const AgendaView = (props: AgendaViewProps) => {
         setCalendarContent(content);
       });
     }
-  }, [calendarDays[0]]);
+  }, [calendarDays[0], config.timezone]);
 
   useEffect(() => {
     if (!monthInView) {

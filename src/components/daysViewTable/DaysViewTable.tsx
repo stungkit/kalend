@@ -179,7 +179,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
         setCalendarContent(days);
       });
     }
-  }, [config.hourHeight]);
+  }, [config.hourHeight, config.timezone]);
 
   useLayoutEffect(() => {
     if (!hasExternalLayout) {

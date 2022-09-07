@@ -23,14 +23,8 @@ const formatOverflowingEvents = (events: CalendarEvent[], timezone: string) => {
   }
 
   events.forEach((event) => {
-    const dateTimeStartAt = parseToDateTime(
-      event.startAt,
-      event.timezoneStartAt || timezone
-    );
-    const dateTimeEndAt = parseToDateTime(
-      event.endAt,
-      event.timezoneStartAt || timezone
-    );
+    const dateTimeStartAt = parseToDateTime(event.startAt, timezone);
+    const dateTimeEndAt = parseToDateTime(event.endAt, timezone);
 
     // get each day for multi day events
     // @ts-ignore
