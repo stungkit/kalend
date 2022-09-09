@@ -1,5 +1,5 @@
 import { CALENDAR_OFFSET_LEFT } from '../../../../common/constants';
-import { Context } from '../../../../context/store';
+import { Context, Store } from '../../../../context/store';
 import { TIME_FORMAT } from '../../../../common/enums';
 import { createVerticalHours, parseCssDark } from '../../../../utils/common';
 import { useContext } from 'react';
@@ -73,7 +73,7 @@ const renderHours = (
 };
 
 const CalendarBodyHours = () => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { width, config, isDark, height } = store;
   const { hourHeight, timeFormat } = config;
 

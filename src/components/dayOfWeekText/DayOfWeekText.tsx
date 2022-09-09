@@ -1,4 +1,4 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DayOfWeekTextProps } from './DayOfWeekText.props';
 import { parseCssDark } from '../../utils/common';
 import { useContext } from 'react';
@@ -6,7 +6,7 @@ import { useContext } from 'react';
 const DayOfWeekText = (props: DayOfWeekTextProps) => {
   const { width, day } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const { translations } = store;
 

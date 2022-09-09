@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useDeepCompareLayoutEffect } from '../utils/useDeepCompareEffect';
 
 const CalendarTableLayoutLayer = (props: { children: any }) => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const { calendarDays, selectedView, callbacks, config, width, direction } =
     store as Store;

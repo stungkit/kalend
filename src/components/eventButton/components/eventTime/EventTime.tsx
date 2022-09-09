@@ -98,7 +98,7 @@ const normalTime = (
 const EventTime = (props: EventTimeProps) => {
   const { isDark, event, type, endAt, isDarkColor } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { config, isMobile } = store as Store;
   const { timezone, timeFormat } = config as Config;
 

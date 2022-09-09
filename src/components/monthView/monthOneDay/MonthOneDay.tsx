@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { useContext } from 'react';
 
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { EVENT_TYPE } from '../../../common/enums';
 import {
   MONTH_DAY_HEADER_HEIGHT,
@@ -17,7 +17,7 @@ import LuxonHelper from '../../../utils/luxonHelper';
 const MonthOneDay = (props: MonthOneDayProps) => {
   const { index, data, day } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { isDark, selectedDate, callbacks, height } = store;
   const { showMoreMonth } = callbacks;
 

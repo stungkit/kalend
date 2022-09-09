@@ -1,9 +1,9 @@
-import { Context } from '../context/store';
+import { Context, Store } from '../context/store';
 import { getTableOffset } from '../utils/common';
 import { useContext, useEffect } from 'react';
 
 const DimensionsLayoutLayer = (props: { children: any }) => {
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

@@ -1,6 +1,6 @@
 import { CALENDAR_NAVIGATION_DIRECTION } from '../../common/enums';
 import { CalendarDesktopNavigationProps } from './CalendarDesktopNavigation.props';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { EvaIcons } from '../eva-icons';
 import {
@@ -8,6 +8,7 @@ import {
   navigateToToday,
 } from '../../utils/getCalendarDays';
 import { parseClassName, parseCssDark } from '../../utils/common';
+import { parseToDateTime } from '../../utils/dateTimeParser';
 import { useContext, useEffect, useState } from 'react';
 import ButtonBase from '../buttonBase/ButtonBase';
 import ButtonIcon from '../buttonIcon/ButtonIcon';
@@ -23,7 +24,7 @@ import MobileLayout from '../mobileLayout/MobileLayout';
  * @constructor
  */
 const CalendarDesktopNavigation = (props: CalendarDesktopNavigationProps) => {
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };
@@ -41,7 +42,7 @@ const CalendarDesktopNavigation = (props: CalendarDesktopNavigationProps) => {
 
   const [isFullNavigationHidden, setIsFullNavigationHidden] = useState(true);
 
-  const titleDate = DateTime.fromISO(selectedDate);
+  const titleDate = parseToDateTime(selectedDate, config.timezone);
   const title = `${
     translations['months'][`${titleDate.toFormat('MMMM').toLowerCase()}`]
   } ${titleDate.toFormat('yyyy')}`;

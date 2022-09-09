@@ -1,4 +1,4 @@
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { EVENT_TYPE } from '../../../common/enums';
 import { MonthWeekRowProps } from './MonthWeekRow.props';
 import { parseCssDark } from '../../../utils/common';
@@ -10,7 +10,7 @@ import MonthViewButtonMore from '../monthViewButtonMore/MonthViewButtonMore';
 const MonthWeekRow = (props: MonthWeekRowProps) => {
   const { days, index, itemRows } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { monthLayout } = store;
 
   const renderEvents = (data: any, i: number) => {

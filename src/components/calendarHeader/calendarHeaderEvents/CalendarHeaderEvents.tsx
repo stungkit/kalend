@@ -1,4 +1,4 @@
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { EVENT_TYPE } from '../../../common/enums';
 import { getDaysNum } from '../../../utils/calendarDays';
@@ -7,7 +7,7 @@ import { useDeepCompareEffect } from '../../../utils/useDeepCompareEffect';
 import EventButton from '../../eventButton/EventButton';
 
 const CalendarHeaderEvents = () => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { selectedView, width, calendarDays } = store;
 
   const renderEvents = (data: any, sequence: number) => {

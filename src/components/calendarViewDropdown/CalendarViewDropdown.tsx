@@ -1,6 +1,6 @@
 import { CalendarViewDropdownProps } from './CalendarViewDropdown.props';
 import { Config } from '../../common/interface';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { EvaIcons } from '../eva-icons';
 import { parseCalendarViewToText, parseCssDark } from '../../utils/common';
 import { useContext, useState } from 'react';
@@ -15,7 +15,7 @@ const CalendarViewDropdown = (props: CalendarViewDropdownProps) => {
 
   const [isOpen, setOpen] = useState(false);
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { config, isMobile, selectedView, translations } = store;
   const { isDark, disabledViews, disableMobileDropdown } = config as Config;
 

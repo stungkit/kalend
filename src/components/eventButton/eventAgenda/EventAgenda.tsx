@@ -1,5 +1,5 @@
 import { CalendarEvent } from '../../../common/interface';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { EVENT_TYPE } from '../../../common/enums';
 import { useContext } from 'react';
 import EventSummary from '../components/eventSummary/EventSummary';
@@ -13,7 +13,7 @@ interface EventAgendaProps {
 
 const EventAgenda = (props: EventAgendaProps) => {
   const { isDark, event, type } = props;
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { isMobile } = store;
 
   return !isMobile ? (

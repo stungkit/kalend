@@ -1,5 +1,5 @@
 import { CALENDAR_VIEW } from '../../common/enums';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { HeaderCalendarButtonProps } from './HeaderCalendarButtons.props';
 import { parseClassName } from '../../utils/common';
 import { useContext } from 'react';
@@ -8,7 +8,7 @@ import ButtonBase from '../buttonBase/ButtonBase';
 const HeaderCalendarButton = (props: HeaderCalendarButtonProps) => {
   const { buttonData, setViewChanged, handleClose, isForcedMobile } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { isDark, selectedView, isMobile } = store;
 
   const isSelected: boolean = buttonData.value === selectedView;
@@ -67,7 +67,7 @@ interface HeaderCalendarButtonsProps {
  */
 const HeaderCalendarButtons = (props: HeaderCalendarButtonsProps) => {
   const { setViewChanged, handleClose, isForcedMobile } = props;
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const { isDark, isMobile, translations, config } = store;
   const { disabledViews } = config;

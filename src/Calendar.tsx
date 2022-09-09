@@ -15,7 +15,7 @@ import MonthView from './components/monthView/MonthView';
 import WeekNumbersCol from './components/weekNumbersCol/WeekNumbersCol';
 
 const Calendar = (props: CalendarProps) => {
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

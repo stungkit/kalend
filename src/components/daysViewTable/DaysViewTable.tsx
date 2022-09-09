@@ -1,6 +1,6 @@
 import { CALENDAR_OFFSET_LEFT } from '../../common/constants';
 import { CALENDAR_VIEW } from '../../common/enums';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { DaysViewTableProps } from './DaysViewTable.props';
 import {
@@ -12,7 +12,7 @@ import { useDeepCompareLayoutEffect } from '../../utils/useDeepCompareEffect';
 import CalendarBodyHours from './daysViewOneDay/calendarBodyHours/CalendarBodyHours';
 import DaysViewOneDay from './daysViewOneDay/DaysViewOneDay';
 import DaysViewVerticalLines from './daysViewVerticalLines/DaysViewVerticalLines';
-import KalendLayout from 'kalend-layout';
+import KalendLayout from '../../layout';
 
 const renderOneDay = (
   calendarDays: DateTime[],
@@ -39,7 +39,7 @@ const DaysViewTable = (props: DaysViewTableProps) => {
   const [wasInit, setWasInit] = useState(false);
   const [calendarContent, setCalendarContent] = useState(null);
 
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

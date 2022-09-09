@@ -1,12 +1,12 @@
 import { AgendaViewProps } from './AgendaView.props';
 import { CALENDAR_VIEW } from '../../common/enums';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { getSelectedViewType, parseCssDark } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
 import { useDeepCompareEffect } from '../../utils/useDeepCompareEffect';
 import AgendaDayRow from './agendaDayRow/AgendaDayRow';
-import KalendLayout from 'kalend-layout';
+import KalendLayout from '../../layout';
 import LuxonHelper, { EVENTS_DAY_FORMAT } from '../../utils/luxonHelper';
 
 const renderAgendaEvents = (
@@ -80,7 +80,7 @@ const AgendaView = (props: AgendaViewProps) => {
 
   const [calendarContent, setCalendarContent] = useState(null);
 
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

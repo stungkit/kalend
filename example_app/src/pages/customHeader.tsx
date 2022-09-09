@@ -2,8 +2,8 @@ import GithubButton from '../components/GithubButton';
 import React, { useRef, useState } from 'react';
 import CalendComponent from '../components/Calendar';
 import { OnStateChangeFunc } from '../../../src/common/interface';
-import { CALENDAR_VIEW } from 'kalend-layout';
 import { DateTime } from 'luxon';
+import { CALENDAR_VIEW } from 'kalend/common/enums';
 
 const MainPage = () => {
   const kalendRef: any = useRef();

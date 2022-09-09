@@ -1,6 +1,6 @@
 import { AgendaDayRowProps } from './AgendaDayRow.props';
 import { CalendarEvent } from '../../../common/interface';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { EVENT_TYPE } from '../../../common/enums';
 import { parseCssDark } from '../../../utils/common';
@@ -47,7 +47,7 @@ const renderEvents = (events: CalendarEvent[], timezone: string) => {
 
 const AgendaDayRow = (props: AgendaDayRowProps) => {
   const { day, events, scrollToThis } = props;
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const dayEvents = renderEvents(events, store.config.timezone);
 
   useEffect(() => {
