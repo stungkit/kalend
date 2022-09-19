@@ -1,10 +1,10 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { parseCssDark } from '../../utils/common';
 import { useContext, useLayoutEffect, useState } from 'react';
 import ButtonBase from '../buttonBase/ButtonBase';
 
 const Dropdown = (props: any) => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const { translations, height } = store;
 

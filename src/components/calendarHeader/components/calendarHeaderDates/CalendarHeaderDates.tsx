@@ -1,5 +1,5 @@
 import { CalendarHeaderDatesProps } from './CalendarHeaderDates.props';
-import { Context } from '../../../../context/store';
+import { Context, Store } from '../../../../context/store';
 import { DateTime } from 'luxon';
 import { getCorrectWidth } from '../../../../utils/common';
 import { useContext } from 'react';
@@ -14,7 +14,7 @@ import DateWeekDay from '../../../dateWeekDay/DateWeekDay';
  * @constructor
  */
 const CalendarHeaderDates = (props: CalendarHeaderDatesProps) => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { width, isMobile, selectedView } = store;
 
   const { daysNum, calendarDays } = props;

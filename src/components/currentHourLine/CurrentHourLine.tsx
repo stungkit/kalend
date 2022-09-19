@@ -1,10 +1,10 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { parseCssDark } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
 
 const CurrentHourLine = () => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { config, colors } = store;
 
   const [currentTime, setCurrentTime] = useState(DateTime.now());

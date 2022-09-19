@@ -9,6 +9,7 @@ import {
   Style,
 } from '../common/interface';
 import { DateTime } from 'luxon';
+import { KeyedDayViewResult } from '../layout/types';
 import { createCallbacks, createConfig } from '../layers/ConfigLayer';
 import { createContext, useReducer } from 'react';
 import Reducer from './reducer';
@@ -18,7 +19,7 @@ export interface Store {
   isLoading: boolean;
   headerEventRowsCount: number;
   initialView: CALENDAR_VIEW | null;
-  selectedView: CALENDAR_VIEW | null;
+  selectedView: CALENDAR_VIEW;
   selectedDate: DateTime;
   calendarDays: DateTime[];
   width: number;
@@ -27,8 +28,8 @@ export interface Store {
   isMobile: boolean;
   events: any;
   // layouts
-  daysViewLayout: EventLayout | null;
-  headerLayout: EventLayout | null;
+  daysViewLayout: KeyedDayViewResult | null;
+  headerLayout: EventLayout[] | null;
   monthLayout: EventLayout[] | null;
   monthOverflowEvents: any;
   layoutUpdateSequence: number;
@@ -52,7 +53,7 @@ const StoreProvider = ({ children, ...props }: any) => {
     isLoading: false,
     headerEventRowsCount: 0,
     initialView: null,
-    selectedView: null,
+    selectedView: CALENDAR_VIEW.WEEK,
     selectedDate: DateTime.now(),
     calendarDays: [],
     width: 0,

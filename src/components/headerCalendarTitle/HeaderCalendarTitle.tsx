@@ -1,4 +1,4 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { HeaderCalendarTitleProps } from './HeaderCalendarTitle.props';
 import { parseClassName } from '../../utils/common';
 import { useContext } from 'react';
@@ -11,7 +11,7 @@ import { useContext } from 'react';
 const HeaderCalendarTitle = (props: HeaderCalendarTitleProps) => {
   const { title } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { isDark, isMobile } = store;
 
   return (

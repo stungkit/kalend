@@ -1,5 +1,5 @@
 import { CALENDAR_VIEW } from '../../common/enums';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { DateWeekDayProps } from './DateWeekDay.props';
 import { parseCssDark } from '../../utils/common';
@@ -9,7 +9,7 @@ import LuxonHelper from '../../utils/luxonHelper';
 const DateWeekDay = (props: DateWeekDayProps) => {
   const { width, day } = props;
 
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

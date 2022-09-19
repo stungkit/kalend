@@ -1,4 +1,4 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 import { useContext } from 'react';
 
@@ -35,7 +35,7 @@ const renderCols = (calendarDays: DateTime[], translations: any) => {
 };
 
 const WeekNumbersCol = () => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const cols = renderCols(store.calendarDays, store.translations);
   return <div className={'Kalend__WeekNumbersCol__wrapper'}>{cols}</div>;

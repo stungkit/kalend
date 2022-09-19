@@ -1,10 +1,10 @@
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { EVENT_TYPE } from '../../../common/enums';
 import { useContext } from 'react';
 import EventButton from '../../eventButton/EventButton';
 
 const ShowMoreModal = () => {
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };
@@ -53,7 +53,7 @@ const ShowMoreModal = () => {
             textAlign: 'center',
           }}
         >
-          {showMoreEvents.day.toFormat('dd. MMM')}
+          {showMoreEvents?.day.toFormat('dd. MMM')}
         </h6>
         {events}
       </div>
