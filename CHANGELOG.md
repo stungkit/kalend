@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.0
+- changed timezone handling
+- added layout functions to main repository
+
 ## 0.15.8
 - fixed scrolling agenda view with custom header
 
