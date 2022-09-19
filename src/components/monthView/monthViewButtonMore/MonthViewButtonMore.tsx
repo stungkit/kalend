@@ -1,5 +1,5 @@
 import { CalendarEvent } from '../../../common/interface';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { EVENT_TYPE } from '../../../common/enums';
 import { MonthViewButtonMoreProps } from './MonthViewButtonMore.props';
@@ -9,7 +9,7 @@ import Dropdown from '../../dropdown/Dropdown';
 import EventButton from '../../eventButton/EventButton';
 
 const MonthViewButtonMore = (props: MonthViewButtonMoreProps) => {
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

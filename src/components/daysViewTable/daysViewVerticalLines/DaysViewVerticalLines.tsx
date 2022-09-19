@@ -1,6 +1,6 @@
 import { CALENDAR_OFFSET_LEFT } from '../../../common/constants';
 import { CALENDAR_VIEW } from '../../../common/enums';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { getCorrectWidth, parseCssDark } from '../../../utils/common';
 import { useContext } from 'react';
@@ -38,7 +38,7 @@ const renderVerticalLines = (
 };
 
 const DaysViewVerticalLines = () => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const {
     calendarDays,
     width,

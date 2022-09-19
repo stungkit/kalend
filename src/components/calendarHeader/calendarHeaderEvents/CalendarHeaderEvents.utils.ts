@@ -20,10 +20,10 @@ export const stretchHeaderEventTimes = (
 ): CalendarEvent => {
   return {
     ...event,
-    startAt: parseToDateTime(event.startAt, event.timezoneStartAt || timezone)
+    startAt: parseToDateTime(event.startAt, timezone)
       .set({ hour: 0, minute: 0, second: 1 })
       .toString(),
-    endAt: parseToDateTime(event.endAt, event.timezoneStartAt || timezone)
+    endAt: parseToDateTime(event.endAt, timezone)
       .set({ hour: 23, minute: 59, second: 59 })
       .toString(),
   };
@@ -109,7 +109,7 @@ export const calculatePositionForHeaderEvents = (
     // @ts-ignore
     items.forEach((item: CalendarEvent) => {
       // filter only relevant events
-      if (item.allDay || isAllDayEvent(item)) {
+      if (item.allDay || isAllDayEvent(item, timezone)) {
         const isInRange: boolean = isEventInRange(item, calendarDays, timezone);
         if (isInRange) {
           // correct position when external event ends in next day

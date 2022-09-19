@@ -1,6 +1,6 @@
 import { CALENDAR_VIEW, TIME_FORMAT, WEEKDAY_START } from '../common/enums';
 import { Callbacks, Config } from '../common/interface';
-import { Context } from '../context/store';
+import { Context, Store } from '../context/store';
 import { DEFAULT_HOUR_HEIGHT } from '../common/constants';
 import { DateTime } from 'luxon';
 import { KalendProps } from '../index';
@@ -94,7 +94,7 @@ export const createCallbacks = (props: KalendProps): Callbacks => {
 const ConfigLayer = (props: KalendProps) => {
   const [isReady, setIsReady] = useState(false);
 
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };
@@ -144,6 +144,7 @@ const ConfigLayer = (props: KalendProps) => {
 
   useEffect(() => {
     initFromProps();
+    setContext('layoutUpdateSequence', store.layoutUpdateSequence + 1);
   }, [
     props.timeFormat,
     props.timezone,

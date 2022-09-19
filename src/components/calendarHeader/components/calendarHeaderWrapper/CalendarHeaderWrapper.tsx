@@ -1,13 +1,13 @@
 import { CALENDAR_OFFSET_LEFT } from '../../../../common/constants';
 import { CalendarHeaderWrapperProps } from './CalendarHeaderWrapper.props';
-import { Context } from '../../../../context/store';
+import { Context, Store } from '../../../../context/store';
 import { parseCssDark } from '../../../../utils/common';
 import { useContext } from 'react';
 
 const CalendarHeaderWrapper = (props: CalendarHeaderWrapperProps) => {
   const { children, isMonthView } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const { width, rawWidth, isDark, showWeekNumbers } = store;
 
   const headerStyle = {

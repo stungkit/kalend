@@ -1,11 +1,11 @@
 import { CALENDAR_VIEW } from '../../common/enums';
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { useContext } from 'react';
 import CalendarHeaderDays from './calendarHeaderDays/CalendarHeaderDays';
 import CalendarHeaderEvents from './calendarHeaderEvents/CalendarHeaderEvents';
 
 const CalendarHeader = (props: any) => {
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
 
   const { isDark, width, selectedView } = store;
 

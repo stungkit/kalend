@@ -3,10 +3,12 @@ import { useContext, useEffect, useReducer, useRef } from 'react';
 import { CalendarEvent, Config, EventStyle } from '../../common/interface';
 import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
-import { EVENT_TABLE_DELIMITER_SPACE } from '../../common/constants';
+import {
+  EVENT_TABLE_DELIMITER_SPACE,
+  MONTH_EVENT_HEIGHT,
+} from '../../common/constants';
 import { EVENT_TYPE } from '../../common/enums';
 import { EventButtonProps } from './EventButton.props';
-import { MONTH_EVENT_HEIGHT } from 'kalend-layout/constants';
 import { calculateHeaderAfterDrag, onMoveHeader } from './utils/draggingHeader';
 import {
   calculateMonthEventAfterDrag,
@@ -80,7 +82,7 @@ const EventButton = (props: EventButtonProps) => {
   const eventWasChangedRef = useRef(false);
   const endAtRef = useRef(null);
 
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

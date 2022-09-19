@@ -1,4 +1,4 @@
-import { Context } from '../context/store';
+import { Context, Store } from '../context/store';
 import { useContext, useEffect } from 'react';
 import de from '../locales/de.json';
 import en from '../locales/en.json';
@@ -37,7 +37,7 @@ const LanguageLayer = (props: {
   const { language, customLanguage } = props;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };

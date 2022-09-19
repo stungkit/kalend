@@ -7,14 +7,8 @@ export const parseAllDayEvent = (
   event: CalendarEvent,
   timezone: string
 ): CalendarEvent => {
-  const startAtDateTime: DateTime = parseToDateTime(
-    event.startAt,
-    event.timezoneStartAt || timezone
-  );
-  const endAtDateTime: DateTime = parseToDateTime(
-    event.endAt,
-    event.timezoneStartAt || timezone
-  );
+  const startAtDateTime: DateTime = parseToDateTime(event.startAt, timezone);
+  const endAtDateTime: DateTime = parseToDateTime(event.endAt, timezone);
 
   return {
     ...event,
@@ -33,10 +27,9 @@ export const parseAllDayEvents = (events: any, timezone: string) => {
     const eventsItems: CalendarEvent[] = keyValue[1];
 
     eventsItems.forEach((item: CalendarEvent) => {
-      const dateKey: any = parseToDateTime(
-        item.startAt,
-        item.timezoneStartAt || timezone
-      ).toFormat('dd-MM-yyyy');
+      const dateKey: any = parseToDateTime(item.startAt, timezone).toFormat(
+        'dd-MM-yyyy'
+      );
 
       if (result[dateKey]) {
         result[dateKey] = [

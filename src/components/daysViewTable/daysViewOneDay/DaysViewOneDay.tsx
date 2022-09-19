@@ -1,5 +1,5 @@
 import { CalendarEvent, Config } from '../../../common/interface';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { DateTime } from 'luxon';
 import { EVENT_TYPE } from '../../../common/enums';
 import { disableTouchDragging } from '../../eventButton/EventButton.utils';
@@ -75,7 +75,7 @@ interface DaysViewOneDayProps {
 }
 const DaysViewOneDay = (props: DaysViewOneDayProps) => {
   const { day, index, data } = props;
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const {
     width,
     selectedView,

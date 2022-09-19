@@ -1,4 +1,4 @@
-import { Context } from '../../context/store';
+import { Context, Store } from '../../context/store';
 import { DateTime } from 'luxon';
 
 import { CALENDAR_VIEW } from '../../common/enums';
@@ -8,7 +8,7 @@ import { getSelectedViewType } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
 import { useDeepCompareEffect } from '../../utils/useDeepCompareEffect';
 import DaysViewVerticalLines from '../daysViewTable/daysViewVerticalLines/DaysViewVerticalLines';
-import KalendLayout from 'kalend-layout';
+import KalendLayout from '../../layout';
 import MonthWeekRow from './monthWeekRow/MonthWeekRow';
 
 const renderOneRow = (
@@ -38,7 +38,7 @@ const MonthView = (props: MonthViewProps) => {
   const [calendarContent, setCalendarContent] = useState(null);
 
   const { events } = props;
-  const [store, dispatch] = useContext(Context);
+  const [store, dispatch]: [Store, any] = useContext(Context);
   const setContext = (type: string, payload: any) => {
     dispatch({ type, payload });
   };
@@ -78,7 +78,7 @@ const MonthView = (props: MonthViewProps) => {
         });
       }
     }
-  }, [height, rawWidth]);
+  }, [height, rawWidth, store.config.timezone]);
 
   useDeepCompareEffect(() => {
     if (wasInit && height !== 0) {

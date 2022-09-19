@@ -6,7 +6,7 @@
 kalend-*
 calend-*
 .husky
-
+web
 
 #example_app
 /example_app/node_modules

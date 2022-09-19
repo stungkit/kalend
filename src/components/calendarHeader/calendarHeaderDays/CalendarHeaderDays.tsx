@@ -1,6 +1,6 @@
 import { CALENDAR_VIEW } from '../../../common/enums';
 import { CalendarHeaderDaysProps } from './CalendarHeaderDays.props';
-import { Context } from '../../../context/store';
+import { Context, Store } from '../../../context/store';
 import { useContext } from 'react';
 import CalendarHeaderColText from '../components/calendarHeaderColText/CalendarHeaderColText';
 import CalendarHeaderDates from '../components/calendarHeaderDates/CalendarHeaderDates';
@@ -10,7 +10,7 @@ import CalendarHeaderWrapper from '../components/calendarHeaderWrapper/CalendarH
 const CalendarHeaderDays = (props: CalendarHeaderDaysProps) => {
   const { isMonthView } = props;
 
-  const [store] = useContext(Context);
+  const [store]: [Store] = useContext(Context);
   const {
     calendarDays,
     selectedDate,
