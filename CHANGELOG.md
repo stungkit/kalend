@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.1
+- fixed padding for event time
+
 ## 0.16.0
 - changed timezone handling
 - added layout functions to main repository
