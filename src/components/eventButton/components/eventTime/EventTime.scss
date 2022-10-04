@@ -14,7 +14,7 @@
 
 .Kalend__Event__time__type {
   &-normal {
-    padding: inherit;
+    padding: 2px 1px 4px 4px;
 
     &-dark {
       @extend .Kalend__Event__time__type-normal;
