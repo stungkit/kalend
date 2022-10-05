@@ -60,13 +60,30 @@ export const parseTimezone = (timezone: string, isFloating?: boolean) => {
  * @param config
  */
 export const calculateOffsetTop = (event: CalendarEvent, config: Config) => {
-  const startDate = getStartDate(event, config);
+  let startDate = getStartDate(event, config);
 
   const topPosition = startDate.set({
     hour: 0,
     minute: 0,
     second: 0,
   });
+
+  const startDateOffset = startDate.offset;
+  const topPositionOffset = topPosition.offset;
+
+  // make offset correction when top position is in different DST zone than
+  // startDate
+  if (startDateOffset !== topPositionOffset) {
+    if (topPositionOffset > startDateOffset) {
+      startDate = startDate.minus({
+        minutes: topPositionOffset - startDateOffset,
+      });
+    } else {
+      startDate = startDate.plus({
+        minutes: startDateOffset - topPositionOffset,
+      });
+    }
+  }
 
   const hourHeightValue = getRelativeHourHeight(config);
 

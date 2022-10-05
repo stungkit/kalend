@@ -47,7 +47,7 @@ export const calculateNewTimeWeekDay = (
   const minutesOffset: number = (offsetTopValue / hourHeight) * 60;
 
   // add minutes calculated from new offset top
-  const newStartAt: DateTime = originalStartAtDateTime
+  let newStartAt: DateTime = originalStartAtDateTime
     .set({
       year: newDay.year,
       day: newDay.day,
@@ -56,6 +56,27 @@ export const calculateNewTimeWeekDay = (
       minute: 0,
     })
     .plus({ minutes: minutesOffset });
+
+  const topPosition = newStartAt.set({
+    hour: 0,
+    minute: 0,
+    second: 0,
+  });
+  const offsetTopPosition = topPosition.offset;
+
+  // make offset correction when top position is in different DST zone than
+  // startDate
+  if (newStartAt.offset !== offsetTopPosition) {
+    if (offsetTopPosition > newStartAt.offset) {
+      newStartAt = newStartAt.plus({
+        minutes: offsetTopPosition - newStartAt.offset,
+      });
+    } else {
+      newStartAt = newStartAt.minus({
+        minutes: newStartAt.offset - offsetTopPosition,
+      });
+    }
+  }
 
   // set correct endAt
   const newEndAt: DateTime = newStartAt.plus({ minutes: diffInMinutes });
