@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.2
+- fixed wrong event position on day when DST happens
+
 ## 0.16.1
 - fixed padding for event time
 
