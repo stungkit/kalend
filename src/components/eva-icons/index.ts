@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 import Calendar from './CalendarIcon';
+import CheckCircle from './CheckCircle';
 import ChevronDown from './ChevronDown';
 import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
@@ -32,4 +33,5 @@ export const EvaIcons = {
   ChevronRight,
   Calendar,
   More,
+  CheckCircle,
 };

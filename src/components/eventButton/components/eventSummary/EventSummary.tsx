@@ -1,3 +1,4 @@
+import { CALENDAR_EVENT_TYPE } from '../../../../common/interface';
 import { EVENT_TYPE } from '../../../../common/enums';
 import { parseCssDark } from '../../../../utils/common';
 import { parseEventString } from '../../../../utils/reactUtils';
@@ -26,6 +27,8 @@ const parseFontSize = (height: number) => {
 const EventSummary = (props: EventSummaryProps) => {
   const { isDark, summary, type, isDarkColor, event, height } = props;
 
+  const eventType = event.type || CALENDAR_EVENT_TYPE.EVENT;
+
   const style: any = {
     color: event.style?.color ? event.style.color : 'inherit',
   };
@@ -50,7 +53,9 @@ const EventSummary = (props: EventSummaryProps) => {
     )} ${parseCssDark(`Kalend__Event__summary__type-${type}`, isDark)} ${
       isDarkColor ? 'Kalend__text-light' : 'Kalend__text-dark'
     }`,
-    style
+    style,
+    eventType,
+    isDarkColor || false
   );
 };
 

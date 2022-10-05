@@ -1,7 +1,14 @@
+import { CALENDAR_EVENT_TYPE } from '../common/interface';
+import { EvaIcons } from '../components/eva-icons';
+import { parseCssDark } from './common';
+import React from 'react';
+
 export const parseEventString = (
   value: string,
   className: string,
-  style: any
+  style: any,
+  type: CALENDAR_EVENT_TYPE,
+  isDark: boolean
 ) => {
   let newValueString = value;
 
@@ -17,8 +24,21 @@ export const parseEventString = (
   }
 
   return (
-    <p className={className} style={style}>
-      {newValueString}
-    </p>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+      }}
+    >
+      {type === CALENDAR_EVENT_TYPE.EVENT ? (
+        <EvaIcons.CheckCircle
+          className={parseCssDark('Kalend__icon-task', isDark)}
+        />
+      ) : null}
+      <p className={className} style={style}>
+        {newValueString}
+      </p>
+    </div>
   );
 };
