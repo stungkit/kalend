@@ -8,7 +8,8 @@ export const parseEventString = (
   className: string,
   style: any,
   type: CALENDAR_EVENT_TYPE,
-  isDark: boolean
+  isDark: boolean,
+  isTaskChecked?: boolean
 ) => {
   let newValueString = value;
 
@@ -31,10 +32,16 @@ export const parseEventString = (
         flexDirection: 'row',
       }}
     >
-      {type === CALENDAR_EVENT_TYPE.EVENT ? (
-        <EvaIcons.CheckCircle
-          className={parseCssDark('Kalend__icon-task', isDark)}
-        />
+      {type === CALENDAR_EVENT_TYPE.TASK ? (
+        !isTaskChecked ? (
+          <EvaIcons.RadioOff
+            className={parseCssDark('Kalend__icon-task', isDark)}
+          />
+        ) : (
+          <EvaIcons.RadioOn
+            className={parseCssDark('Kalend__icon-task', isDark)}
+          />
+        )
       ) : null}
       <p className={className} style={style}>
         {newValueString}

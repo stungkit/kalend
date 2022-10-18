@@ -16,6 +16,11 @@ const Reducer = (state: any, action: any) => {
         ...state,
         draggingDisabledConditions: action.payload,
       };
+    case 'resizeDisabledConditions':
+      return {
+        ...state,
+        resizeDisabledConditions: action.payload,
+      };
     case 'isMobile':
       return {
         ...state,

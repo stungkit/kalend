@@ -16,7 +16,8 @@ const EventShowMoreMonth = (props: EventShowMoreMonthProps) => {
       <EventSummary
         summary={event.summary}
         isDark={isDark}
-        type={type}
+        viewType={type}
+        type={event.type}
         event={event}
       />
       {/*<EventTime isDark={isDark} event={event} type={type} />*/}

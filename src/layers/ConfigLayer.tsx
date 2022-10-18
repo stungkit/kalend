@@ -131,6 +131,10 @@ const ConfigLayer = (props: KalendProps) => {
       );
     }
 
+    if (props.resizeDisabledConditions) {
+      setContext('resizeDisabledConditions', props.resizeDisabledConditions);
+    }
+
     setIsReady(true);
   };
   useEffect(() => {
