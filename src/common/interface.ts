@@ -17,8 +17,8 @@ export interface CalendarEvent {
   id: any;
   startAt: string;
   endAt: string;
-  timezoneStartAt: string;
-  timezoneEndAt: string;
+  timezoneStartAt?: string;
+  timezoneEndAt?: string;
   summary: string;
   color: string;
   internalID?: string; // for repeated event clones
