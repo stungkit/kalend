@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.16.3
+- fixed clicking on custom event
+
 ## 0.16.2
 - fixed wrong event position on day when DST happens
 
