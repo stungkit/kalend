@@ -38,6 +38,7 @@ export interface Store {
   showMoreEvents: ShowMoreEvents | null;
   direction: CALENDAR_NAVIGATION_DIRECTION;
   draggingDisabledConditions: DraggingDisabledConditions | null;
+  resizeDisabledConditions: DraggingDisabledConditions | null;
   translations: any;
   isNewEventOpen: boolean;
   style: Style;
@@ -74,6 +75,7 @@ const StoreProvider = ({ children, ...props }: any) => {
     translations: en,
     isNewEventOpen: false,
     draggingDisabledConditions: null,
+    resizeDisabledConditions: null,
     isDark: false,
     style: {
       primaryColor: '#ec407a',

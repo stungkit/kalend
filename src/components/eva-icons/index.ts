@@ -21,10 +21,13 @@
 // SOFTWARE.
 
 import Calendar from './CalendarIcon';
+import CheckCircle from './CheckCircle';
 import ChevronDown from './ChevronDown';
 import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
 import More from './more';
+import RadioOff from './RadioOff';
+import RadioOn from './RadioOn';
 
 export const EvaIcons = {
   ChevronDown,
@@ -32,4 +35,7 @@ export const EvaIcons = {
   ChevronRight,
   Calendar,
   More,
+  CheckCircle,
+  RadioOff,
+  RadioOn,
 };

@@ -27,7 +27,8 @@ const EventNormal = (props: EventNormalProps) => {
       <EventSummary
         summary={event.summary}
         isDark={isDark}
-        type={type}
+        viewType={type}
+        type={event.type}
         isDarkColor={isDarkColor}
         event={event}
         height={height}

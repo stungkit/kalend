@@ -30,3 +30,8 @@ export enum TIME_FORMAT {
   H_24 = '24',
   H_12 = '12',
 }
+
+export enum CALENDAR_EVENT_TYPE {
+  EVENT = 'EVENT',
+  TASK = 'TASK',
+}

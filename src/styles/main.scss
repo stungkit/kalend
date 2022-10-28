@@ -102,3 +102,16 @@
 .Kalend__text-dark {
   color: $GRAY_900
 }
+
+.Kalend__icon-task {
+  width: 15px;
+  height: 15px;
+  fill: black;
+  margin-left: 4px;
+  margin-right: 2px;
+
+  &-dark {
+    @extend .Kalend__icon-task;
+    fill: white;
+  }
+}

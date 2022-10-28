@@ -235,6 +235,28 @@ export const checkIfDraggable = (
   return result;
 };
 
+export const checkIfResizable = (
+  resizeDisabledConditions: DraggingDisabledConditions | null,
+  event: CalendarEvent
+) => {
+  if (!resizeDisabledConditions) {
+    return true;
+  }
+
+  let result = true;
+
+  Object.entries(resizeDisabledConditions).forEach(([key, value]) => {
+    if (event[key]) {
+      if (event[key] === value) {
+        result = false;
+        return false;
+      }
+    }
+  });
+
+  return result;
+};
+
 export const isSameMonth = (date?: DateTime) => {
   if (!date) {
     return false;
