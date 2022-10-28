@@ -23,7 +23,11 @@ import {
   onMoveNormalEvent,
   onResizeNormalEvent,
 } from './utils/draggingWeek';
-import { checkIfDraggable, parseCssDark } from '../../utils/common';
+import {
+  checkIfDraggable,
+  checkIfResizable,
+  parseCssDark,
+} from '../../utils/common';
 import {
   disableTouchDragging,
   eventButtonInitialState,
@@ -94,6 +98,7 @@ const EventButton = (props: EventButtonProps) => {
     callbacks,
     height,
     draggingDisabledConditions,
+    resizeDisabledConditions,
   } = store as Store;
 
   const { hourHeight, isDark } = config as Config;
@@ -401,6 +406,10 @@ const EventButton = (props: EventButtonProps) => {
     if (!isDraggable) {
       return;
     }
+    const isResizable = checkIfResizable(resizeDisabledConditions, event);
+    if (!isResizable) {
+      return;
+    }
 
     e.preventDefault();
     e.stopPropagation();
@@ -458,6 +467,7 @@ const EventButton = (props: EventButtonProps) => {
       onMouseDownLong(e);
     }, 120);
   };
+  const isResizable = checkIfResizable(resizeDisabledConditions, event);
 
   return type !== EVENT_TYPE.AGENDA ? (
     <ButtonBase
@@ -520,15 +530,18 @@ const EventButton = (props: EventButtonProps) => {
             width: '100%',
             background: 'transparent',
             zIndex: isResizing.current ? 999 : 9,
-            cursor: 'n-resize',
+            cursor: isResizable ? 'n-resize' : 'inherit',
           }}
           onClick={(e: any) => {
             e.preventDefault();
             e.stopPropagation();
+            if (!isResizable) {
+              return;
+            }
             isResizing.current = true;
           }}
-          onMouseDown={onMouseDownResize}
-          onMouseUp={onMouseUpResize}
+          onMouseDown={isResizable ? onMouseDownResize : undefined}
+          onMouseUp={isResizable ? onMouseUpResize : undefined}
         />
       ) : null}
     </ButtonBase>

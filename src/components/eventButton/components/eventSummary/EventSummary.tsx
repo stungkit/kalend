@@ -1,3 +1,4 @@
+import { CALENDAR_EVENT_TYPE } from '../../../../common/interface';
 import { EVENT_TYPE } from '../../../../common/enums';
 import { parseCssDark } from '../../../../utils/common';
 import { parseEventString } from '../../../../utils/reactUtils';
@@ -5,7 +6,8 @@ import { parseEventString } from '../../../../utils/reactUtils';
 interface EventSummaryProps {
   isDark: boolean;
   summary: string;
-  type: EVENT_TYPE;
+  viewType: EVENT_TYPE;
+  type?: CALENDAR_EVENT_TYPE;
   isDarkColor?: boolean;
   event: any;
   height?: number;
@@ -24,7 +26,9 @@ const parseFontSize = (height: number) => {
 };
 
 const EventSummary = (props: EventSummaryProps) => {
-  const { isDark, summary, type, isDarkColor, event, height } = props;
+  const { isDark, summary, type, viewType, isDarkColor, event, height } = props;
+
+  const eventType = type || CALENDAR_EVENT_TYPE.EVENT;
 
   const style: any = {
     color: event.style?.color ? event.style.color : 'inherit',
@@ -47,10 +51,13 @@ const EventSummary = (props: EventSummaryProps) => {
     ` Kalend__text ${parseCssDark(
       'Kalend__Event__summary',
       isDark
-    )} ${parseCssDark(`Kalend__Event__summary__type-${type}`, isDark)} ${
+    )} ${parseCssDark(`Kalend__Event__summary__type-${viewType}`, isDark)} ${
       isDarkColor ? 'Kalend__text-light' : 'Kalend__text-dark'
     }`,
-    style
+    style,
+    eventType,
+    isDarkColor || false,
+    event.isTaskChecked
   );
 };
 

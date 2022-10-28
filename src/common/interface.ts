@@ -13,6 +13,11 @@ export interface Settings {
   hourHeight: number;
 }
 
+export enum CALENDAR_EVENT_TYPE {
+  EVENT = 'EVENT',
+  TASK = 'TASK',
+}
+
 export interface CalendarEvent {
   id: any;
   startAt: string;
@@ -21,6 +26,7 @@ export interface CalendarEvent {
   timezoneEndAt?: string;
   summary: string;
   color: string;
+  type?: CALENDAR_EVENT_TYPE;
   internalID?: string; // for repeated event clones
   children?: {
     agendaView?: ReactNode;

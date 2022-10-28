@@ -46,7 +46,8 @@ const EventAgenda = (props: EventAgendaProps) => {
       <EventSummary
         summary={event.summary}
         isDark={isDark}
-        type={type}
+        viewType={type}
+        type={event.type}
         isDarkColor={isDark}
         event={event}
       />
@@ -66,7 +67,8 @@ const EventAgenda = (props: EventAgendaProps) => {
         <EventSummary
           summary={event.summary}
           isDark={isDark}
-          type={type}
+          viewType={type}
+          type={event.type}
           isDarkColor={isDark}
           event={event}
         />

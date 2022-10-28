@@ -4,10 +4,12 @@ import {
 } from '../../../common/constants';
 import { CalendarEvent, Config } from '../../../common/interface';
 import { DateTime } from 'luxon';
+import { UTC_TIMEZONE } from '../../../layout/constants';
 import {
   getDateFromPosition,
   getHourHeightPartialUnit,
 } from '../../daysViewTable/daysViewOneDay/DaysViewOneDay';
+import { isEventFloating } from '../../../layout/utils/Helper';
 
 export const calculateNewTimeWeekDay = (
   offsetTopValue: number,
@@ -18,10 +20,10 @@ export const calculateNewTimeWeekDay = (
   config: Config
 ): CalendarEvent => {
   const originalStartAtDateTime = DateTime.fromISO(event.startAt).setZone(
-    config.timezone
+    isEventFloating(event) ? UTC_TIMEZONE : config.timezone
   );
   const originalEndAtDateTime = DateTime.fromISO(event.endAt).setZone(
-    config.timezone
+    isEventFloating(event) ? UTC_TIMEZONE : config.timezone
   );
 
   let goingForward = false;
