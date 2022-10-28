@@ -22,8 +22,8 @@ export interface CalendarEvent {
   id: any;
   startAt: string;
   endAt: string;
-  timezoneStartAt: string;
-  timezoneEndAt: string;
+  timezoneStartAt?: string;
+  timezoneEndAt?: string;
   summary: string;
   color: string;
   type?: CALENDAR_EVENT_TYPE;
