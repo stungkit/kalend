@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.17.1
+## 0.17.2
 - fixed task icon position
 
 ## 0.17.0
