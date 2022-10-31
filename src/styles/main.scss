@@ -109,6 +109,7 @@
   fill: black;
   margin-left: 4px;
   margin-right: 2px;
+  min-width: 15px;
 
   &-dark {
     @extend .Kalend__icon-task;
