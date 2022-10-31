@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.17.1
+- fixed task icon position
+
 ## 0.17.0
 - added task event type (https://docs.kalend.org/docs/basics/events)
 - added option to disable resizing event with prop ```resizeDisabledConditions```
