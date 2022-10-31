@@ -28,8 +28,10 @@ export const parseEventString = (
     <div
       style={{
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         flexDirection: 'row',
+        maxHeight: '100%',
+        overflow: 'hidden',
       }}
     >
       {type === CALENDAR_EVENT_TYPE.TASK ? (
