@@ -22,6 +22,8 @@ const EventNormal = (props: EventNormalProps) => {
         display: 'flex',
         flexDirection: 'column',
         maxWidth: '-webkit-fill-available',
+        maxHeight: '100%',
+        overflow: 'hidden',
       }}
     >
       <EventSummary

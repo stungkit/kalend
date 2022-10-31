@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.0
+- added task event type (https://docs.kalend.org/docs/basics/events)
+- added option to disable resizing event with prop ```resizeDisabledConditions```
+- fixed wrong result when dragging event with floating timezone 
+
 ## 0.16.3
 - fixed clicking on custom event
 

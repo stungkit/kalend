@@ -45,4 +45,30 @@ Kalend now accepts only array of events, you don't need to format them to dates 
                     }
             ]
 
+# Task event 
 
+From version 0.17.0 you can define event as "task" with two new properties:
+
+- **type** will add radio icon to the event to show different event type. There are two valid enums:
+
+```
+enum CALENDAR_EVENT_TYPE {
+    EVENT = 'EVENT',
+    TASK = 'TASK',
+}
+```
+- **isTaskChecked** will change radio icon to filled version if set to true.
+
+Example:
+
+```
+{
+    id: 2,
+    startAt: '2021-11-21T18:00:00.000Z',
+    endAt: '2021-11-21T19:00:00.000Z',
+    summary: 'test',
+    type: CALENDAR_EVENT_TYPE.TASK,
+    isTaskChecked: true
+}
+
+```
