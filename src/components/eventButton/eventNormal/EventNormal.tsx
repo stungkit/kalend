@@ -19,7 +19,7 @@ const EventNormal = (props: EventNormalProps) => {
   return (
     <div
       style={{
-        display: 'flex',
+        // display: 'flex',
         flexDirection: 'column',
         maxWidth: '-webkit-fill-available',
         maxHeight: '100%',
