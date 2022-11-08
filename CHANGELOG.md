@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.17.3
+- fixed text layout in event
+
 ## 0.17.2
 - fixed task icon position
 
