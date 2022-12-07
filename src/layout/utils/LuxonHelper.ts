@@ -1,5 +1,6 @@
 import { DateTime, DurationObjectUnits } from 'luxon';
 import { FLOATING_DATETIME, UTC_TIMEZONE } from '../constants';
+import Datez from 'datez';
 
 export const LuxonHelper: any = {
   isSameDay: (dateA: DateTime, dateB: DateTime): boolean => {
@@ -51,5 +52,5 @@ export const parseToDateTime = (
 
   const thisDate = DateTime.fromISO(dateString);
 
-  return thisDate.setZone(zone);
+  return Datez.setZone(thisDate, zone);
 };

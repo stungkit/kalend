@@ -10,6 +10,7 @@ import {
   getHourHeightPartialUnit,
 } from '../../daysViewTable/daysViewOneDay/DaysViewOneDay';
 import { isEventFloating } from '../../../layout/utils/Helper';
+import Datez from 'datez';
 
 export const calculateNewTimeWeekDay = (
   offsetTopValue: number,
@@ -19,10 +20,12 @@ export const calculateNewTimeWeekDay = (
   hourHeight: number,
   config: Config
 ): CalendarEvent => {
-  const originalStartAtDateTime = DateTime.fromISO(event.startAt).setZone(
+  const originalStartAtDateTime = Datez.setZone(
+    DateTime.fromISO(event.startAt),
     isEventFloating(event) ? UTC_TIMEZONE : config.timezone
   );
-  const originalEndAtDateTime = DateTime.fromISO(event.endAt).setZone(
+  const originalEndAtDateTime = Datez.setZone(
+    DateTime.fromISO(event.endAt),
     isEventFloating(event) ? UTC_TIMEZONE : config.timezone
   );
 
