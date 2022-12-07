@@ -6,6 +6,7 @@ import { EVENT_TYPE } from '../../../common/enums';
 import { parseCssDark } from '../../../utils/common';
 import { useContext, useEffect } from 'react';
 import DateWeekDay from '../../dateWeekDay/DateWeekDay';
+import Datez from 'datez';
 import DayOfWeekText from '../../dayOfWeekText/DayOfWeekText';
 import EventButton from '../../eventButton/EventButton';
 
@@ -27,8 +28,8 @@ const renderEvents = (events: CalendarEvent[], timezone: string) => {
 
   let sortedEvents: CalendarEvent[] = normalEvents?.sort((a, b) => {
     return (
-      DateTime.fromISO(a.startAt).setZone(timezone).toMillis() -
-      DateTime.fromISO(b.startAt).setZone(timezone).toMillis()
+      Datez.setZone(DateTime.fromISO(a.startAt), timezone).toMillis() -
+      Datez.setZone(DateTime.fromISO(b.startAt), timezone).toMillis()
     );
   });
 
