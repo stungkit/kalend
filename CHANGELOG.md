@@ -2,6 +2,7 @@
 
 ## 0.17.5
 - fixed bugs with timezones
+- added Italian translation, thanks to @Tond28
 
 ## 0.17.4
 - added support for more timezones
