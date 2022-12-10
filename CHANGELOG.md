@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.17.5
+- fixed bugs with timezones
+
 ## 0.17.4
 - added support for more timezones
 
