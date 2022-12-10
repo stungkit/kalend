@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "color": "4.2.3",
-    "datez": "0.0.6",
+    "datez": "0.0.7",
     "dequal": "2.0.3",
     "luxon": "3.1.1"
   },

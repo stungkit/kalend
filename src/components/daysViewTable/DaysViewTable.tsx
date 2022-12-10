@@ -5,6 +5,7 @@ import { DateTime } from 'luxon';
 import { DaysViewTableProps } from './DaysViewTable.props';
 import {
   formatDateTimeToString,
+  getCurrentTime,
   getSelectedViewType,
 } from '../../utils/common';
 import { useContext, useEffect, useLayoutEffect, useState } from 'react';
@@ -55,7 +56,9 @@ const DaysViewTable = (props: DaysViewTableProps) => {
   const adjustScrollPosition = () => {
     const currentElement: any = document.getElementById(`Kalend__timetable`);
 
-    const shift = config.focusHour ? config.focusHour : DateTime.now().hour;
+    const shift = config.focusHour
+      ? config.focusHour
+      : getCurrentTime(config.timezone).hour;
 
     currentElement.scrollTop = shift * config.hourHeight - config.hourHeight;
   };

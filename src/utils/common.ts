@@ -265,3 +265,13 @@ export const isSameMonth = (date?: DateTime) => {
   const currentDate = DateTime.now();
   return date.month === currentDate.month && date.year === currentDate.year;
 };
+
+export const getCurrentTime = (timezone: string | undefined) => {
+  if (timezone) {
+    return DateTime.fromISO(DateTime.now().toString(), {
+      zone: timezone,
+    });
+  }
+
+  return DateTime.now();
+};

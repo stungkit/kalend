@@ -353,7 +353,7 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     height: hourHeight * 24,
   };
 
-  const isToday: boolean = LuxonHelper.isToday(day);
+  const isToday: boolean = LuxonHelper.isToday(day, config.timezone);
   const isFirstDay: boolean = index === 0;
   const dataForDay: any = data;
 
