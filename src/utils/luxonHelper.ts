@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import { getCurrentTime } from './common';
 import Datez from 'datez';
 //
 // Support for local datetime, timezones and floating times
@@ -87,8 +88,8 @@ const LuxonHelper = {
     return dateBDateTime.valueOf() - dateADateTime.valueOf() > 0;
   },
 
-  isToday: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isToday: (dateA: DateTime, timezone: string | undefined): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return (
       dateA.day === todayDate.day &&
@@ -97,8 +98,11 @@ const LuxonHelper = {
     );
   },
 
-  isTodayOrInFuture: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isTodayOrInFuture: (
+    dateA: DateTime,
+    timezone: string | undefined
+  ): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return (
       dateA.day >= todayDate.day &&
@@ -122,8 +126,8 @@ const LuxonHelper = {
     );
   },
 
-  isCurrentMonth: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isCurrentMonth: (dateA: DateTime, timezone: string | undefined): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return dateA.month === todayDate.month && dateA.year === todayDate.year;
   },

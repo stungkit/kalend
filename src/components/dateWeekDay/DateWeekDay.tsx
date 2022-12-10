@@ -14,9 +14,9 @@ const DateWeekDay = (props: DateWeekDayProps) => {
     dispatch({ type, payload });
   };
 
-  const { selectedView, callbacks } = store;
+  const { selectedView, callbacks, config } = store;
 
-  const isDayToday: boolean = LuxonHelper.isToday(day);
+  const isDayToday: boolean = LuxonHelper.isToday(day, config.timezone);
 
   const isMonthView: boolean = selectedView === CALENDAR_VIEW.MONTH;
   const isAgendaView: boolean = selectedView === CALENDAR_VIEW.AGENDA;

@@ -1,13 +1,16 @@
 import { CALENDAR_NAVIGATION_DIRECTION } from '../../common/enums';
 import { CalendarDesktopNavigationProps } from './CalendarDesktopNavigation.props';
 import { Context, Store } from '../../context/store';
-import { DateTime } from 'luxon';
 import { EvaIcons } from '../eva-icons';
+import {
+  getCurrentTime,
+  parseClassName,
+  parseCssDark,
+} from '../../utils/common';
 import {
   getNewCalendarDays,
   navigateToToday,
 } from '../../utils/getCalendarDays';
-import { parseClassName, parseCssDark } from '../../utils/common';
 import { parseToDateTime } from '../../utils/dateTimeParser';
 import { useContext, useEffect, useState } from 'react';
 import ButtonBase from '../buttonBase/ButtonBase';
@@ -84,7 +87,7 @@ const CalendarDesktopNavigation = (props: CalendarDesktopNavigationProps) => {
       selectedView,
       setContext,
       weekDayStart,
-      DateTime.now()
+      getCurrentTime(config.timezone)
     );
   };
 
