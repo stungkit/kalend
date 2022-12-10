@@ -45,6 +45,24 @@ const Calendar = (props: CalendarProps) => {
   }, []);
 
   useEffect(() => {
+    const initialDate = props.initialDate
+      ? DateTime.fromISO(props.initialDate)
+      : DateTime.now();
+
+    setContext('selectedDate', initialDate);
+
+    if (selectedView) {
+      const calendarDaysInitial: DateTime[] = getCalendarDays(
+        selectedView,
+        initialDate,
+        config.weekDayStart
+      );
+
+      setContext('calendarDays', calendarDaysInitial);
+    }
+  }, [config.weekDayStart]);
+
+  useEffect(() => {
     const viewChangedValue = props.selectedView || viewChanged;
     // if (props.selectedView && props.selectedView === selectedView) {
     //   return;

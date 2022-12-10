@@ -157,6 +157,7 @@ const ConfigLayer = (props: KalendProps) => {
     props.isDark,
     props.disableMobileDropdown,
     props.newEventText,
+    props.weekDayStart,
   ]);
 
   useEffect(() => {
