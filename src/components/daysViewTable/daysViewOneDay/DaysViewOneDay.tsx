@@ -280,8 +280,10 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     // correct layout with actual value from endAt date
     if (endAt) {
       const correctedValue = (endAt.hour + endAt.minute / 60) * hourHeight;
-      newEventEndOffset.current = correctedValue;
-      setOffsetTopEnd(correctedValue);
+      if (!isNaN(correctedValue)) {
+        newEventEndOffset.current = correctedValue;
+        setOffsetTopEnd(correctedValue);
+      }
     }
 
     if (isUpdating.current) {
