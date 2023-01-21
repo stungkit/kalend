@@ -14,7 +14,8 @@ const renderAgendaEvents = (
   calendarDays: DateTime[],
   isDark: boolean,
   selectedDate?: DateTime,
-  monthInView?: null | DateTime
+  monthInView?: null | DateTime,
+  noEventsTranslations?: string
 ) => {
   let scrollToSet = false;
   let hasNoEvents = false;
@@ -64,7 +65,7 @@ const renderAgendaEvents = (
       <div className={'Kalend__Agenda__container-empty'}>
         <div className={'Kalend__Agenda__container-inner'}>
           <h4 className={parseCssDark('Kalend__Agenda__text-empty', isDark)}>
-            No events
+            {noEventsTranslations}
           </h4>
         </div>
       </div>
@@ -85,7 +86,8 @@ const AgendaView = (props: AgendaViewProps) => {
     dispatch({ type, payload });
   };
 
-  const { calendarDays, width, height, config, selectedDate } = store;
+  const { calendarDays, width, height, config, selectedDate, translations } =
+    store;
   const { isDark } = config;
 
   const hasExternalLayout = eventLayouts !== undefined;
@@ -107,7 +109,8 @@ const AgendaView = (props: AgendaViewProps) => {
           calendarDays,
           isDark,
           selectedDate,
-          monthInView
+          monthInView,
+          translations['common']['noEvents']
         );
         setCalendarContent(content);
       });
@@ -139,7 +142,8 @@ const AgendaView = (props: AgendaViewProps) => {
             calendarDays,
             isDark,
             selectedDate,
-            monthInView
+            monthInView,
+            translations['common']['noEvents']
           );
           setCalendarContent(content);
         });
@@ -160,7 +164,8 @@ const AgendaView = (props: AgendaViewProps) => {
         calendarDays,
         isDark,
         selectedDate,
-        monthInView
+        monthInView,
+        translations['common']['noEvents']
       );
       setCalendarContent(content);
     }
