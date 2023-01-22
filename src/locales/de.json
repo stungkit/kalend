@@ -1,4 +1,7 @@
 {
+  "common": {
+    "noEvents": "Keine Ereignisse"
+  },
   "buttons": {
     "today": "Heute",
     "agenda": "Agenda",

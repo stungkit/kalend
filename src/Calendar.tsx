@@ -158,13 +158,11 @@ const Calendar = (props: CalendarProps) => {
         setViewChanged={setViewChanged}
         kalendRef={props.kalendRef}
       />
-      {selectedView !== CALENDAR_VIEW.AGENDA &&
-      selectedView !== CALENDAR_VIEW.MONTH ? (
+      {selectedView !== CALENDAR_VIEW.AGENDA ? (
         <CalendarHeader setViewChanged={setViewChanged} />
       ) : null}
       {selectedView === CALENDAR_VIEW.MONTH ? (
         <>
-          <CalendarHeader />
           <div
             style={{
               display: 'flex',

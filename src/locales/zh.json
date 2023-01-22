@@ -1,4 +1,7 @@
 {
+  "common": {
+    "noEvents": "没有活动"
+  },
   "buttons": {
     "today": "今天",
     "agenda": "议程",
