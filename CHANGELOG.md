@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.6
+- added transition to calendar header
+- fixed NaN bug when dragging new event
+- added missing translation for "No events" in agenda view
+
 ## 0.17.5
 - fixed bugs with timezones
 - added Italian translation, thanks to @Tond28
