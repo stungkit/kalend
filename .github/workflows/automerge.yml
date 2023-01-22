@@ -22,3 +22,10 @@ jobs:
           git pull origin main
           git merge --no-ff main -m "Auto merge main to development"
           git push origin development
+      - name: Merge main to packages
+        run: |
+          git fetch --unshallow
+          git checkout packages
+          git pull origin main
+          git merge --no-ff main -m "Auto merge main to packages"
+          git push origin packages
