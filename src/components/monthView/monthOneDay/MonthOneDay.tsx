@@ -18,7 +18,7 @@ const MonthOneDay = (props: MonthOneDayProps) => {
   const { index, data, day } = props;
 
   const [store]: [Store] = useContext(Context);
-  const { isDark, selectedDate, callbacks, height } = store;
+  const { isDark, selectedDate, callbacks, height, config } = store;
   const { showMoreMonth } = callbacks;
 
   const renderEvents = (dataset: any) => {
@@ -79,7 +79,7 @@ const MonthOneDay = (props: MonthOneDayProps) => {
   const renderDate = (date: DateTime) => {
     const { day } = date;
 
-    if (LuxonHelper.isToday(date)) {
+    if (LuxonHelper.isToday(date, config.timezone)) {
       return (
         <div
           className={parseCssDark(

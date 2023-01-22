@@ -1,13 +1,14 @@
 import { Context, Store } from '../../context/store';
-import { DateTime } from 'luxon';
-import { parseCssDark } from '../../utils/common';
+import { getCurrentTime, parseCssDark } from '../../utils/common';
 import { useContext, useEffect, useState } from 'react';
 
 const CurrentHourLine = () => {
   const [store]: [Store] = useContext(Context);
   const { config, colors } = store;
 
-  const [currentTime, setCurrentTime] = useState(DateTime.now());
+  const [currentTime, setCurrentTime] = useState(
+    getCurrentTime(config.timezone)
+  );
 
   const wrapperStyle: any = {
     top:
@@ -18,7 +19,7 @@ const CurrentHourLine = () => {
   useEffect(() => {
     // 2 minutes interval
     const interval = setInterval(() => {
-      setCurrentTime(DateTime.now());
+      setCurrentTime(getCurrentTime(config.timezone));
     }, 120000);
 
     return () => {

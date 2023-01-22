@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.17.6
+- added transition to calendar header
+- fixed NaN bug when dragging new event
+- added missing translation for "No events" in agenda view
+
+## 0.17.5
+- fixed bugs with timezones
+- added Italian translation, thanks to @Tond28
+
+## 0.17.4
+- added support for more timezones
+
+## 0.17.3
+- fixed text layout in event
+
+## 0.17.2
+- fixed task icon position
+
 ## 0.17.0
 - added task event type (https://docs.kalend.org/docs/basics/events)
 - added option to disable resizing event with prop ```resizeDisabledConditions```

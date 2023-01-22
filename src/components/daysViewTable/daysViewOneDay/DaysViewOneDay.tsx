@@ -280,8 +280,10 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     // correct layout with actual value from endAt date
     if (endAt) {
       const correctedValue = (endAt.hour + endAt.minute / 60) * hourHeight;
-      newEventEndOffset.current = correctedValue;
-      setOffsetTopEnd(correctedValue);
+      if (!isNaN(correctedValue)) {
+        newEventEndOffset.current = correctedValue;
+        setOffsetTopEnd(correctedValue);
+      }
     }
 
     if (isUpdating.current) {
@@ -353,7 +355,7 @@ const DaysViewOneDay = (props: DaysViewOneDayProps) => {
     height: hourHeight * 24,
   };
 
-  const isToday: boolean = LuxonHelper.isToday(day);
+  const isToday: boolean = LuxonHelper.isToday(day, config.timezone);
   const isFirstDay: boolean = index === 0;
   const dataForDay: any = data;
 

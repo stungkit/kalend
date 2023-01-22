@@ -1,4 +1,6 @@
 import { DateTime } from 'luxon';
+import { getCurrentTime } from './common';
+import Datez from 'datez';
 //
 // Support for local datetime, timezones and floating times
 //
@@ -45,12 +47,12 @@ export const DatetimeParser = (
 
   // Adjust datetime to device timezone
   if (deviceTimezone) {
-    const dateConvert: DateTime = thisDate.setZone(zone);
+    const dateConvert: DateTime = Datez.setZone(thisDate, zone);
 
     return dateConvert.setZone(deviceTimezone).toString();
   }
 
-  return thisDate.setZone(zone).toString();
+  return Datez.setZone(thisDate, zone).toString();
 };
 
 const LuxonHelper = {
@@ -86,8 +88,8 @@ const LuxonHelper = {
     return dateBDateTime.valueOf() - dateADateTime.valueOf() > 0;
   },
 
-  isToday: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isToday: (dateA: DateTime, timezone: string | undefined): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return (
       dateA.day === todayDate.day &&
@@ -96,8 +98,11 @@ const LuxonHelper = {
     );
   },
 
-  isTodayOrInFuture: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isTodayOrInFuture: (
+    dateA: DateTime,
+    timezone: string | undefined
+  ): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return (
       dateA.day >= todayDate.day &&
@@ -121,8 +126,8 @@ const LuxonHelper = {
     );
   },
 
-  isCurrentMonth: (dateA: DateTime): boolean => {
-    const todayDate: DateTime = DateTime.local();
+  isCurrentMonth: (dateA: DateTime, timezone: string | undefined): boolean => {
+    const todayDate = getCurrentTime(timezone);
 
     return dateA.month === todayDate.month && dateA.year === todayDate.year;
   },
@@ -139,7 +144,7 @@ const LuxonHelper = {
   toUtcString: (date: string): string => DateTime.fromISO(date).toUTC().toISO(),
   toUtc: (date: DateTime): string => date.toUTC().toISO(),
   setTimezone: (dateString: string, timezone: string): string =>
-    DateTime.fromISO(dateString).setZone(timezone).toString(),
+    Datez.setZone(DateTime.fromISO(dateString), timezone).toString(),
   toHumanDate: (dateString: string): string =>
     DateTime.fromISO(dateString).toFormat('d LLL yyyy hh:mm'),
 };

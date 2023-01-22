@@ -28,7 +28,7 @@ export const parseEventString = (
     <div
       style={{
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         flexDirection: 'row',
         maxHeight: '100%',
         overflow: 'hidden',

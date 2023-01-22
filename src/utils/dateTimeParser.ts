@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import Datez from 'datez';
 
 //
 // Support for local datetime, timezones and floating times
@@ -35,12 +36,12 @@ export const DatetimeParser = (
 
   // Adjust datetime to device timezone
   if (deviceTimezone) {
-    const dateConvert: DateTime = thisDate.setZone(zone);
+    const dateConvert: DateTime = Datez.setZone(thisDate, zone);
 
     return dateConvert.setZone(deviceTimezone).toString();
   }
 
-  return thisDate.setZone(zone).toString();
+  return Datez.setZone(thisDate, zone).toString();
 };
 
 export const parseToDateTime = (
@@ -72,5 +73,5 @@ export const parseToDateTime = (
     }
   }
 
-  return thisDate.setZone(zone);
+  return Datez.setZone(thisDate, zone);
 };

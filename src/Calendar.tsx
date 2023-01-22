@@ -45,6 +45,24 @@ const Calendar = (props: CalendarProps) => {
   }, []);
 
   useEffect(() => {
+    const initialDate = props.initialDate
+      ? DateTime.fromISO(props.initialDate)
+      : DateTime.now();
+
+    setContext('selectedDate', initialDate);
+
+    if (selectedView) {
+      const calendarDaysInitial: DateTime[] = getCalendarDays(
+        selectedView,
+        initialDate,
+        config.weekDayStart
+      );
+
+      setContext('calendarDays', calendarDaysInitial);
+    }
+  }, [config.weekDayStart]);
+
+  useEffect(() => {
     const viewChangedValue = props.selectedView || viewChanged;
     // if (props.selectedView && props.selectedView === selectedView) {
     //   return;
@@ -140,13 +158,11 @@ const Calendar = (props: CalendarProps) => {
         setViewChanged={setViewChanged}
         kalendRef={props.kalendRef}
       />
-      {selectedView !== CALENDAR_VIEW.AGENDA &&
-      selectedView !== CALENDAR_VIEW.MONTH ? (
+      {selectedView !== CALENDAR_VIEW.AGENDA ? (
         <CalendarHeader setViewChanged={setViewChanged} />
       ) : null}
       {selectedView === CALENDAR_VIEW.MONTH ? (
         <>
-          <CalendarHeader />
           <div
             style={{
               display: 'flex',
