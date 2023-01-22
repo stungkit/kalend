@@ -28,7 +28,7 @@ const MainPage = () => {
           }}
         >
           <a
-            href={'https://github.com/nibdo/calend'}
+            href={'https://github.com/nibdo/kalend'}
             target="_blank"
             rel="noreferrer"
           >
