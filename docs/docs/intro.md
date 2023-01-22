@@ -22,8 +22,6 @@ Until stable version 1 updates might include breaking changes
 
 ### LIVE DEMO: https://demo.kalend.org
 
-### Storybook: https://storybook.kalend.org
-
 ##
 
 ## Getting Started
